@@ -1,9 +1,11 @@
-<?php echo validation_errors(); ?>
+<?= validation_errors(); ?>
 <div>
-	<?php echo form_open('login'); ?>
-	<input type="text" name="UserName" placeholder="username">
-	<input type="text" name="Password" placeholder="Password">
+	<?= ''//form_open('login/login'); ?>
+	<form action="/login/login" method="POST">
+	<input type="text" name="username" placeholder="username">
+	<input type="password" name="password" placeholder="password">
 	</br>
 	<input type="submit" name="submit" value="Login">
-	<? echo form_close(); ?>
+	<?= form_close(); ?>
+	<? print_r($data); ?>
 </div>

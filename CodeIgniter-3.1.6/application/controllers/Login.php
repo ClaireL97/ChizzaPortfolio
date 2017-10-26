@@ -11,15 +11,38 @@ class Login extends CI_Controller {
 	{
 
 		$this->load->helper('form');
-		$this->load->view("templates/header", array("title"=>"Login"));
-		$this->load->view("loginForm");
-		$this->load->view("templates/footer");
+		$this->load->model('User_model');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$data = $this->input->post();
+		if ($this->form_validation->run() !== FALSE) {
+			// user user_model to validate login credentials
+			$logged_in = $this->User_model->validate($this->input->post('username'), $this->input->post('password'));
+
+			if ($logged_in == true) {
+			$this->load->view("templates/header", array("title"=>"Logged in!"));
+			$this->load->view("loginForm");
+			$this->load->view("templates/footer");
+			$this->session->set_userdata(array('logged_in' => true));
+			} else {
+			$this->load->view("templates/header", array("title"=>"AAAND you failed!"));
+			$this->load->view("loginForm");
+			$this->load->view("templates/footer");
+			}
+
+		} else {
+			$this->load->view("templates/header", array("title"=>"Login"));
+			$this->load->view("loginForm");
+			$this->load->view("templates/footer");
+		}
 
 	}
 
 	public function logOut()
 	{
-
+		$this->session->unset_userdata('logged_in');
 	}
 
 	public function getUser()
