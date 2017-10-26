@@ -13,6 +13,7 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('User_model');
 		$this->load->library('form_validation');
+		$error_message = '';
 
 		$this->form_validation->set_rules('username', 'username', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
@@ -22,21 +23,16 @@ class Login extends CI_Controller {
 			$logged_in = $this->User_model->validate($this->input->post('username'), $this->input->post('password'));
 
 			if ($logged_in == true) {
-			$this->load->view("templates/header", array("title"=>"Logged in!"));
-			$this->load->view("loginForm");
-			$this->load->view("templates/footer");
-			$this->session->set_userdata(array('logged_in' => true));
+				redirect('Homepage/index');
 			} else {
-			$this->load->view("templates/header", array("title"=>"AAAND you failed!"));
-			$this->load->view("loginForm");
-			$this->load->view("templates/footer");
+				// reload view but with some $verification_error_message
+				$error_message = "YOU FAILED";
 			}
 
-		} else {
-			$this->load->view("templates/header", array("title"=>"Login"));
-			$this->load->view("loginForm");
-			$this->load->view("templates/footer");
 		}
+		$this->load->view("templates/header", array("title"=>"Login"));
+		$this->load->view("loginForm", array("error_message"=>$error_message));
+		$this->load->view("templates/footer");
 
 	}
 

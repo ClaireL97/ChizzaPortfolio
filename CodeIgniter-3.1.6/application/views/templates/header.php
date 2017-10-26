@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<nav>
-			<a href="#">Home</a>
+			<a href="/Homepage/index">Home</a>
 			<a href="#">Gallery</a>
 			<a href="#">About Me</a>
 			<a href="#">Resume</a>
