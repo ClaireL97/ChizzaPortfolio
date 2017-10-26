@@ -10,6 +10,9 @@
 # decimal(##, 2) #good for dollar amounts
 # text # near unlimited storage -- good for notes and such
 # password #(i think)
+DROP DATABASE ChizzaPortfolio;
+CREATE DATABASE ChizzaPortfolio;
+USE ChizzaPortfolio;
 
 CREATE TABLE user
 (
@@ -46,10 +49,11 @@ name varchar(64),
 PRIMARY KEY(id)
 );
 
-CREATE TABLE art_tags
+CREATE TABLE art_tag
 (
 art_id int(11) unsigned,
-tag_id int(11) unsigned
+tag_id int(11) unsigned,
+PRIMARY KEY(art_id, tag_id)
 );
 
 CREATE TABLE note
@@ -81,5 +85,28 @@ linkedin varchar(64),
 youtube varchar(64),
 instagram varchar(64),
 other_media text,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE gallery
+(
+id int(11) unsigned AUTO_INCREMENT,
+title varchar(64),
+PRIMARY KEY(id)
+);
+
+CREATE TABLE gallery_tags
+(
+gallery_id int(11) unsigned,
+tag_id int(11) unsigned,
+PRIMARY KEY(gallery_id, tag_id)
+);
+
+CREATE TABLE affiliation
+(
+id int(11) unsigned AUTO_INCREMENT,
+user_id int(11) unsigned,
+name varchar(255),
+url varchar(255),
 PRIMARY KEY(id)
 );
