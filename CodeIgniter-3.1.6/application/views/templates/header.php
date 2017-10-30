@@ -10,6 +10,8 @@
 			<a href="#">About Me</a>
 			<a href="#">Resume</a>
 			<a href="#">Contact</a>
-			<a href="/login/login">Login</a>
-			<a href="/login/logout">Log Out</a>
+			<? // if user is not logged in ?>
+			<a href="/Login/login">Login</a>
+			<? // else ?>
+			<a href="/Login/logOut">Log Out</a>
 		</nav>

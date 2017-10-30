@@ -12,7 +12,7 @@ class User_model extends CI_Model {
 
 		if($user->num_rows()==1)
 		{
-			return true;
+			return $user->row();
 		}
 		else
 		{
