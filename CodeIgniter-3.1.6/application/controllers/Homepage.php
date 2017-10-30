@@ -6,16 +6,26 @@ class Homepage extends CI_Controller {
 	public function index()
 	{
 			$this->load->helper('form');
-
+			$this->load->model('UserInfo_model');
 			$this->load->view("templates/header", array("title"=>"Home"));
-			$data['synopsis'] = ''; // user_info->getSynopsis();
-			$data['synopsisForm'] = $this->load->view("synopsisForm", $data, TRUE);
+			$data['synopsis'] = $this->UserInfo_model->get_synopsis(1);
+
+			if ($this->session->userdata('logged_in')) {
+				$data['synopsisForm'] = $this->load->view("synopsisForm", $data, TRUE);
+			}
+
 			$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 			$this->load->view("homePage", $data);
 	}
 
 	public function save_synopsis()
-	{
+	{	
+		$this->load->model('UserInfo_model');
+		$user_id = $this->session->userdata('user_id');
+		$synopsis = $this->input->post('synopsis');
+
+		$this->UserInfo_model->save_synopsis($user_id, $synopsis);
+
 		// save synopsis thru the user_info model
 		redirect('/Homepage/index');
 	}

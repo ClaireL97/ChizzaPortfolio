@@ -4,12 +4,10 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('session');
 	}
 
 	public function login()
 	{
-
 		$this->load->helper('form');
 		$this->load->model('User_model');
 		$this->load->library('form_validation');
@@ -20,9 +18,14 @@ class Login extends CI_Controller {
 		$data = $this->input->post();
 		if ($this->form_validation->run() !== FALSE) {
 			// user user_model to validate login credentials
-			$logged_in = $this->User_model->validate($this->input->post('username'), $this->input->post('password'));
+			$user = $this->User_model->validate($this->input->post('username'), $this->input->post('password'));
 
-			if ($logged_in == true) {
+			$this->session->set_userdata(array(
+				"user_id" => $user->id,
+				"logged_in" => true
+			));
+
+			if (isset($user->id)) { // log in successful
 				redirect('Homepage/index');
 			} else {
 				// reload view but with some $verification_error_message
@@ -39,6 +42,9 @@ class Login extends CI_Controller {
 	public function logOut()
 	{
 		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('user_id');
+		$this->Session->sess_destroy();
+		redirect('Homepage/index');
 	}
 
 	public function getUser()
