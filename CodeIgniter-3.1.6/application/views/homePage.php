@@ -2,12 +2,17 @@
 
 
 <div id="synopsis">
-	<button id="show-synopsis-form" value="Edit">Edit</button>
+	<?php if (isset($_SESSION['logged_in'])) { ?>
+		<button id="show-synopsis-form" value="Edit">Edit</button>
+	<?php } ?>
 	<?= $synopsis ?>
 </div>
-<div id="synopsis-form-div" style="display:none">
-	<?= $synopsisForm ?>
-</div>
+
+<?php if (isset($_SESSION['logged_in'])) { ?>
+	<div id="synopsis-form-div" style="display:none">
+		<?= $synopsisForm ?>
+	</div>
+<?php } ?>
 
 <?= $footer ?>
 <script>
@@ -21,13 +26,7 @@ $(document).ready(function(){
 	$("#synopsis-form").on('submit', function(e) {
 		$("#synopsis").show();
 		$("#synopsis-form-div").hide();
-		// AJAX to send new synopsis to controller/database
-		// update content in div with new data
 	});
 });
-	// function on button.click
-		// hide normal div, unhide edit div
-	// else if button click is to unhide normal
-		//then hide edit mode unhide normal
 
 </script>

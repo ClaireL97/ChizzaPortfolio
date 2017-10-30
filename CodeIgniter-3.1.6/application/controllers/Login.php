@@ -43,7 +43,7 @@ class Login extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('user_id');
-		$this->Session->sess_destroy();
+		$this->session->sess_destroy();
 		redirect('Homepage/index');
 	}
 

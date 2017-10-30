@@ -10,8 +10,9 @@
 			<a href="#">About Me</a>
 			<a href="#">Resume</a>
 			<a href="#">Contact</a>
-			<? // if user is not logged in ?>
-			<a href="/Login/login">Login</a>
-			<? // else ?>
-			<a href="/Login/logOut">Log Out</a>
+			<?php if (!isset($_SESSION['logged_in'])) { ?>
+				<a href="/Login/login">Login</a>
+			<?php } else { ?>
+				<a href="/Login/logOut">Log Out</a>
+			<?php } ?>
 		</nav>
