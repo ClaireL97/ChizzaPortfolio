@@ -1,4 +1,4 @@
-<p> Hello </p>
+<p> HomePage </p>
 
 
 <div id="synopsis">
