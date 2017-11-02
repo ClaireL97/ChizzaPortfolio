@@ -7,7 +7,7 @@
 		<nav>
 			<a href="/Homepage/index">Home</a>
 			<a href="#">Gallery</a>
-			<a href="#">About Me</a>
+			<a href="/About_me/about_me">About Me</a>
 			<a href="#">Resume</a>
 			<a href="#">Contact</a>
 			<?php if (!isset($_SESSION['logged_in'])) { ?>
