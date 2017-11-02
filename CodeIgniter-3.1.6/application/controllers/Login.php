@@ -8,7 +8,6 @@ class Login extends CI_Controller {
 
 	public function login()
 	{
-		$this->load->helper('form');
 		$this->load->model('User_model');
 		$this->load->library('form_validation');
 		$error_message = '';

@@ -5,7 +5,6 @@ class Homepage extends CI_Controller {
 
 	public function index()
 	{
-			$this->load->helper('form');
 			$this->load->model('UserInfo_model');
 			$this->load->view("templates/header", array("title"=>"Home"));
 			$data['synopsis'] = $this->UserInfo_model->get_synopsis(1);
