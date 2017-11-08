@@ -1,0 +1,15 @@
+Controller
+ - loads page & form
+ - on form-submit, you can grab the uploaded file and move it wherever you want to
+ - on form-submit, you'll call the model-functions to save the data gathered from the form
+
+
+Model
+ - stores path to file (not actual file)
+ - stores relevant data to art table (e.g. caption, title, etc)
+ - after saving the art entry, grab the last_insert_id from mysql
+ 	- use that to store art_tag entries using the tags selected by the user
+
+View
+ - form to upload art with associated title/caption/etc
+ - some form of multis-select or multiple-choice for tags
