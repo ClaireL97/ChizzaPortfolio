@@ -35,7 +35,7 @@ class Art extends CI_Controller {
 				'title' => $title,
 				'caption' => $caption,
 				);
-			$this->Art_model->save_upload($artUpload);
+			$this->Art_model->save_upload($artUpload_data);
 
 		} else {
 			$err = $this->upload->display_errors();
