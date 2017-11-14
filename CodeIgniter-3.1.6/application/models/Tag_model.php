@@ -6,5 +6,15 @@ Class Tag_model extends CI_model{
 		$this->db->insert('tag', $tagData);
 	}
 
+	public function delete_tag($id)
+	{
+
+	}
+
+	public function update_tag($id, $name)
+	{
+		
+	}
+
 }
 
