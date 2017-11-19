@@ -10,6 +10,7 @@ class Art extends CI_Controller {
 		// displays view to add new art
 		// more to be added later
 		$this->load->model('Art_model');
+		$data['arts'] = $this->Art_model->get_arts();
 		$this->load->view("templates/header", array("title"=>"Upload Art"));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['artUpload_form'] = $this->load->view("artUpload_form", NULL, TRUE);
@@ -36,11 +37,32 @@ class Art extends CI_Controller {
 				'caption' => $caption,
 				);
 			$this->Art_model->save_upload($artUpload_data);
+			redirect('/Art/manage_art');
 
 		} else {
 			$err = $this->upload->display_errors();
 		}
 
+	}
+
+	public function update_art_data()
+	{
+		$this->load->model('Art_model');
+		$id = $this->input->post('id');
+		$title= $this->input->post('title');
+		$caption = $this->input->post('caption');
+		$this->Art_model->update_art_data($id, $title, $caption);
+
+		redirect('/Art/manage_art');
+	}
+
+	public function delete_art()
+	{
+		$this->load->model('Art_model');
+		$id = $this->input->post('id');
+		$this->Art_model->delete_art($id);
+
+		redirect('/Art/manage_art');
 	}
 
 
