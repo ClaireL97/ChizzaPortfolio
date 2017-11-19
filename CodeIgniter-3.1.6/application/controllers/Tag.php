@@ -29,7 +29,7 @@ class Tag extends CI_Controller {
 	public function update_tag()
 	{
 		$this->load->model('Tag_model');
-		$id = $this->uri->segment(3);
+		$id = $this->input->post('id');
 		$tag = $this->input->post('tag');
 		$this->Tag_model->update_tag($id, $tag);
 
@@ -39,7 +39,7 @@ class Tag extends CI_Controller {
 	public function delete_tag()
 	{
 		$this->load->model('Tag_model');
-		$id = $this->uri->segment(3);
+		$id = $this->input->post('id');
 		$this->Tag_model->delete_tag($id);
 
 		redirect('/Tag/manageTags');
