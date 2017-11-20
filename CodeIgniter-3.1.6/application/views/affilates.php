@@ -1,1 +1,1 @@
-<p>Affiliates</p>
+<p>Affilates</p>
