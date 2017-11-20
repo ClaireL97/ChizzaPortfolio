@@ -79,13 +79,16 @@ profile_pic varchar(255),
 resume varchar(255),
 email varchar(320),
 phone varchar(32),
-tumblr varchar(64),
-twitter varchar(64),
-facebook varchar(64),
-linkedin varchar(64),
-youtube varchar(64),
-instagram varchar(64),
-other_media text,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE social_media
+(
+id int(11) unsigned AUTO_INCREMENT,
+user_id int(11) unsigned,
+name varchar(64),
+url varchar(128),
+description text,
 PRIMARY KEY(id)
 );
 
@@ -109,5 +112,6 @@ id int(11) unsigned AUTO_INCREMENT,
 user_id int(11) unsigned,
 name varchar(255),
 url varchar(255),
+description text,
 PRIMARY KEY(id)
 );
