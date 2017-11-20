@@ -19,12 +19,12 @@ class Login extends CI_Controller {
 			// user user_model to validate login credentials
 			$user = $this->User_model->validate($this->input->post('username'), $this->input->post('password'));
 
-			$this->session->set_userdata(array(
-				"user_id" => $user->id,
-				"logged_in" => true
-			));
-
 			if (isset($user->id)) { // log in successful
+				$this->session->set_userdata(array(
+					"user_id" => $user->id,
+					"logged_in" => true
+				));
+
 				redirect('Homepage/index');
 			} else {
 				// reload view but with some $verification_error_message
