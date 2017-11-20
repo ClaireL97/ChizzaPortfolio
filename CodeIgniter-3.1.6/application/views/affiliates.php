@@ -1,0 +1,2 @@
+<p>Affiliates</p>
+<?= $affiliateForm ?>
