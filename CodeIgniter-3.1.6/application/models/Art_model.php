@@ -1,9 +1,13 @@
 <?php
 Class Art_model extends CI_model{
 
-	public function save_upload($artUpload)
+	public function save_upload($artUpload, $tags)
 	{
 		$this->db->insert('art', $artUpload);
+		$art_id = $this->db->insert_id();
+		foreach ($tags as $tag) {
+			$this->db->insert('art_tag', array('art_id'=>$art_id, 'tag_id'=>$tag));
+		}
 	}
 
 	public function delete_art($id)
