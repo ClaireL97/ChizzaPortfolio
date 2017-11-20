@@ -15,7 +15,7 @@ Class Affiliate_model extends CI_model{
 	{
 		$data = array(
 			'name' => $name,
-			'url' => $url
+			'url' => $url,
 			'description' => $description
 		);
 		$this->db->where('id', $id);
