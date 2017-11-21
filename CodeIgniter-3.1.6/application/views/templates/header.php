@@ -20,7 +20,7 @@
 			<a href="/About_me/about_me">About Me</a>
 			<a href="/Affiliate/affiliates">Affiliates</a>
 			<a href="#">Resume</a>
-			<a href="#">Contact</a>
+			<a href="/Contact/contact">Contact</a>
 			<?php if (!isset($_SESSION['logged_in'])) { ?>
 				<a href="/Login/login">Login</a>
 			<?php } else { ?>
