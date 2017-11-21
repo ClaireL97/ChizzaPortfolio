@@ -41,8 +41,8 @@ class Affiliate extends CI_Controller {
 		$id = $this->input->post('id');
 		$name= $this->input->post('name');
 		$description = $this->input->post('description');
-		$url = $this->input->post('caption');
-		$this->Art_model->update_affiliate_data($id, $name, $description, $url);
+		$url = $this->input->post('url');
+		$this->Affiliate_model->update_affiliate_data($id, $name, $description, $url);
 
 		redirect('/Affiliate/affiliates');
 	}

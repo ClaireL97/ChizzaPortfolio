@@ -28,3 +28,25 @@
 		</div>
 	</div>
 <?php } ?>
+
+<?= $footer ?>
+<script>
+// jquery on document load
+$(document).ready(function(){
+	$(document).on('click', '.edit-affiliate-btn', function(e) {
+		$editDiv = $(this).parent();
+		$editDiv.find('.show-affiliates').hide();
+		$editDiv.find('.edit-affiliate').show();
+		$(this).hide();
+	});
+
+	$(document).on('submit', '.edit-affiliate-form', function(e) {
+		$editDiv = $(this).parent();
+		$editDiv.find('.show-affiliates').show();
+		$editDiv.find('.edit-affiliate').hide();
+		$editDiv.find('.edit-affiliate-btn').show();
+	});
+
+});
+
+</script>
