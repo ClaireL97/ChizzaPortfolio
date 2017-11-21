@@ -37,7 +37,14 @@ class Affiliate extends CI_Controller {
 
 	public function edit_affiliate()
 	{
+		$this->load->model('Affiliate_model');
+		$id = $this->input->post('id');
+		$name= $this->input->post('name');
+		$description = $this->input->post('description');
+		$url = $this->input->post('caption');
+		$this->Art_model->update_affiliate_data($id, $name, $description, $url);
 
+		redirect('/Affiliate/affiliates');
 	}
 
 }
