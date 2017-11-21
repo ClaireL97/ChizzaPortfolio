@@ -16,6 +16,42 @@
 	</div>
 <?php } ?>
 
+<p>Links to Social Media</p>
+<?= $socialmediaForm ?>
+
+<?php foreach ($social_media as $social_media) { ?>
+	<?= validation_errors(); ?>
+	<div class="parent-div">
+		<div class="edit-social_media" style="display:none">
+			<?= form_open("contact/edit_social_media", array('class'=>'edit-social_media-form')); ?>
+			<input type="text" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
+			<br>
+			<input type="text" name="description" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
+			<br>
+			<input type="text" name="url" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
+			<input type="hidden" value="<?=$social_media->id?>" name="id">
+			</br>
+			<input type="submit" name="submit" value="Update">
+			<?= form_close(); ?>
+		</div>
+		<div class="show-social_media">
+			<?= $social_media->name ?> <br/>
+			<?= $social_media->description ?> <br/>
+			<?= $social_media->url ?></br>
+		</div>
+		<?= form_open("contact/remove_social_media"); ?>
+			<input type="hidden" value="<?=$social_media->id?>" name="id">
+			<input type="submit" value="Delete">
+		<?= form_close(); ?>
+		<button class="edit-social_media-btn">Edit</button>
+		<br/>
+		<!-- TODO this only seems to work for one picture -->
+	</div>
+<?php } ?>
+
+
+
+
 <?= $footer ?>
 <script>
 // jquery on document load
@@ -28,6 +64,19 @@ $(document).ready(function(){
 	$("#contact-info-form").on('submit', function(e) {
 		$("#contact-info").show();
 		$("#contact-info-form-div").hide();
+	});
+	$(document).on('click', '.edit-social_media-btn', function(e) {
+		$editDiv = $(this).parent();
+		$editDiv.find('.show-social_media').hide();
+		$editDiv.find('.edit-social_media').show();
+		$(this).hide();
+	});
+
+	$(document).on('submit', '.edit-social_media-form', function(e) {
+		$editDiv = $(this).parent();
+		$editDiv.find('.show-social_medias').show();
+		$editDiv.find('.edit-social_media').hide();
+		$editDiv.find('.edit-social_media-btn').show();
 	});
 });
 
