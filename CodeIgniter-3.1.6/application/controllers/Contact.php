@@ -8,10 +8,13 @@ class Contact extends CI_Controller {
 	public function contact()
 	{
 		$this->load->model('UserInfo_model');
+		$this->load->model('SocialMedia_model');
 		$this->load->view("templates/header", array("title"=>"Contact Info"));
 		$data['contact_info'] = $this->UserInfo_model->get_contact_info(1);
+		$data['social_media'] = $this->SocialMedia_model->get_social_media();
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['contactForm'] = $this->load->view("contactForm", $data, TRUE);
+		$data['socialmediaForm'] = $this->load->view("socialmediaForm", $data, TRUE);
 		$this->load->view("contact", $data);
 	}
 
@@ -43,5 +46,38 @@ class Contact extends CI_Controller {
 
 		redirect('/Contact/contact');
 	}
+
+	public function add_social_media()
+	{
+		$this->load->model('SocialMedia_model');
+		$name = $this->input->post('name');
+		$description = $this->input->post('description');
+		$url = $this->input->post('url');
+		$this->SocialMedia_model->save_social_media(array("name"=>$name, "url"=>$url, "description"=>$description));
+
+		redirect('/Contact/contact');;
+	}
+
+	public function remove_social_media()
+	{
+		$this->load->model('SocialMedia_model');
+		$id = $this->input->post('id');
+		$this->SocialMedia_model->delete_social_media($id);
+
+		redirect('/Contact/contact');;
+	}
+
+	public function edit_social_media()
+	{
+		$this->load->model('SocialMedia_model');
+		$id = $this->input->post('id');
+		$name= $this->input->post('name');
+		$description = $this->input->post('description');
+		$url = $this->input->post('url');
+		$this->SocialMedia_model->edit_social_media($id, $name, $description, $url);
+
+		redirect('/Contact/contact');;
+	}
+
 
 }
