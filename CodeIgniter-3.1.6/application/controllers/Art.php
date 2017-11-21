@@ -7,21 +7,22 @@ class Art extends CI_Controller {
 
 	public function manage_art()
 	{
-		// displays view to add new art
-		// more to be added later
+		if (!isset($_SESSION['logged_in'])) redirect('/Homepage/index');
 		$this->load->model('Art_model');
+		$this->load->model('Tag_model');
+		$data['tags'] = $this->Tag_model->get_tags();
 		$data['arts'] = $this->Art_model->get_arts();
 		$this->load->view("templates/header", array("title"=>"Upload Art"));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
-		$data['artUpload_form'] = $this->load->view("artUpload_form", NULL, TRUE);
+		$data['artUpload_form'] = $this->load->view("artUpload_form", $data, TRUE);
 		$this->load->view("manageArt", $data);
 	}
 
 	public function upload_art()
-	{ 
+	{
 		$this->load->model('Art_model');
 		$user_id = $this->session->userdata('user_id');
-		$config['upload_path'] = '/var/www/chizza_portfolio/CodeIgniter-3.1.6/uploads/';
+		$config['upload_path'] = '/var/www/chizza_portfolio/CodeIgniter-3.1.6/application/uploads/';
 		$config['allowed_types'] = "*";
 		$this->load->library('upload', $config);
 
@@ -30,13 +31,14 @@ class Art extends CI_Controller {
 			$file_data = array('upload_data' => $this->upload->data());
 			$title = $this->input->post('title');
 			$caption = $this->input->post('caption');
+			$tags = (array) $this->input->post('tags');
 			$artUpload_data = array (
 				'user_id' => $user_id,
 				'file' => $file_data['upload_data']['full_path'],
 				'title' => $title,
 				'caption' => $caption,
 				);
-			$this->Art_model->save_upload($artUpload_data);
+			$this->Art_model->save_upload($artUpload_data, $tags);
 			redirect('/Art/manage_art');
 
 		} else {
