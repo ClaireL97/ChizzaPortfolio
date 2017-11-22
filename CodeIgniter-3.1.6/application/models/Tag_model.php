@@ -9,6 +9,8 @@ Class Tag_model extends CI_model{
 	public function delete_tag($id)
 	{
 		$this->db->delete('tag', array('id' => $id));
+		$this->db->delete('art_tag', array('tag_id' => $id));
+		$this->db->delete('gallery_tags', array('tag_id' => $id));
 	}
 
 	public function update_tag($id, $name)
