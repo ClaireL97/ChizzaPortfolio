@@ -9,6 +9,12 @@
 			<?= form_open("Art/update_art_data", array('class'=>'edit-art-form')); ?>
 			<input type="text" name="title" value="<?=$art->title?>" placeholder="<?=$art->title?>">
 			<input type="text" name="caption" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
+			<select name="tags" multiple>
+				<?php foreach($tags as $tag) { ?>
+					<option <?= in_array($tag->id, $art->tag_ids) ? 'selected' : '' ?>
+						value="<?=$tag->id?>"> <?=$tag->name?> </option>
+				<?php } ?>
+			</select>
 			<input type="hidden" value="<?=$art->id?>" name="id">
 			</br>
 			<input type="submit" name="submit" value="Update">
@@ -26,7 +32,7 @@
 			<?= $art->caption ?> <br/>
 		</div>
 	</div>
-	<img src="<?=base_url(array_slice(explode('/', $art->file), -2, 2, true))?>" height="42" width="42">
+	<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="42" width="42">
 	<br/>
 <?php } ?>
 

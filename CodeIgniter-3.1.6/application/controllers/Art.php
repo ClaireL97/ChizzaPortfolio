@@ -53,7 +53,8 @@ class Art extends CI_Controller {
 		$id = $this->input->post('id');
 		$title= $this->input->post('title');
 		$caption = $this->input->post('caption');
-		$this->Art_model->update_art_data($id, $title, $caption);
+		$tags = (array) $this->input->post('tags');
+		$this->Art_model->update_art_data($id, $title, $caption, $tags);
 
 		redirect('/Art/manage_art');
 	}
