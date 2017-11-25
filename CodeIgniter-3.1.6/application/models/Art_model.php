@@ -22,7 +22,9 @@ Class Art_model extends CI_model{
 
 	public function getArtTags($art_id)
 	{
-	//	// return all tags from art_tag where art_id = $art_id
+
+		return $this->db->select('*')->from('art_tag')->where('art_id', $art_id)->get()->result();
+
 	}
 
 	public function update_art_data($id, $title, $caption, $tags)
@@ -42,11 +44,11 @@ Class Art_model extends CI_model{
 		}
 		foreach($tags as $new_tag)
 		{
-			if (!in_array($new_tag, $old_tags)) { // new tag isn't one of the old ones - make it
+			if (!in_array($new_tag, $old_tag_array)) { // new tag isn't one of the old ones - make it
 				$this->db->insert('art_tag', array("art_id"=>$id, "tag_id"=>$new_tag));
 			} // otherwise, new tag is one of the old tags - don't do anything
 		}
-		foreach ($old_tags as $old_tag) {
+		foreach ($old_tag_array as $old_tag) {
 			if (!in_array($old_tag, $tags)) { // old tag isn't one of the new ones - delete it
 				$this->db->delete('art_tag', array("art_id"=>$id, "tag_id"=>$old_tag));
 			} // otherwise, old tag is one of the new tags - don't do anything
@@ -58,6 +60,7 @@ Class Art_model extends CI_model{
 		$arts = $this->db->select('*')->from('art')->get()->result();
 		foreach($arts as $art) {
 			$art_tags = $this->db->select('*')->from('art_tag')->where('art_id', $art->id)->get()->result();
+			$art->tag_ids = array();
 			foreach($art_tags as $tag) { // flatten the array
 				$art->tag_ids[] = $tag->tag_id;
 			}

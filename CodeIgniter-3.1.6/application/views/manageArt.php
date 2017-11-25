@@ -9,7 +9,7 @@
 			<?= form_open("Art/update_art_data", array('class'=>'edit-art-form')); ?>
 			<input type="text" name="title" value="<?=$art->title?>" placeholder="<?=$art->title?>">
 			<input type="text" name="caption" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
-			<select name="tags" multiple>
+			<select name="tags[]" multiple>
 				<?php foreach($tags as $tag) { ?>
 					<option <?= in_array($tag->id, $art->tag_ids) ? 'selected' : '' ?>
 						value="<?=$tag->id?>"> <?=$tag->name?> </option>
@@ -26,7 +26,6 @@
 			<input type="submit" value="Delete">
 		<?= form_close(); ?>
 		<br/>
-		<!-- TODO this only seems to work for one picture -->
 		<div class="show-art">
 			<?= $art->title ?> <br/>
 			<?= $art->caption ?> <br/>
