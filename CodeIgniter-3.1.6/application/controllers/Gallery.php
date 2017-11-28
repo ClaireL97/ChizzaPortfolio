@@ -10,8 +10,7 @@ class Gallery extends CI_Controller {
 		$this->load->model('Gallery_model');
 		$this->load->model('Art_model');
 		$id = $this->input->post('gallery_id');
-		$data['arts'] = $this->Gallery_model->getGalleryArt();
-
+		$data['arts'] = $this->Gallery_model->getGalleryArt(1);
 		$this->load->view("templates/header", array("title"=>"Gallery"));
 		// $data['about_me'] = $this->UserInfo_model->get_about_me(1);
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
