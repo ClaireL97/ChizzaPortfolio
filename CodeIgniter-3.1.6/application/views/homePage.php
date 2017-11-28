@@ -1,6 +1,3 @@
-<p> HomePage </p>
-
-
 <div id="synopsis">
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button id="show-synopsis-form" value="Edit">Edit</button>
