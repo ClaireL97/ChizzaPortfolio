@@ -59,7 +59,7 @@ Class Art_model extends CI_model{
 	{
 		$arts = $this->db->select('*')->from('art')->get()->result();
 		foreach($arts as $art) {
-			$art_tags = $this->db->select('*')->from('art_tag')->where('art_id', $art->id)->get()->result();
+			$art_tags = $this->getArtTags($art->id);
 			$art->tag_ids = array();
 			foreach($art_tags as $tag) { // flatten the array
 				$art->tag_ids[] = $tag->tag_id;
