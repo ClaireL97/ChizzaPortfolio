@@ -2,28 +2,49 @@
 <html>
 	<head>
 		<title> <?= $title ?> </title>
+		<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/css/minty.css">
 	</head>
 	<body>
-		<nav>
-			<a href="/Homepage/index">Home</a>
-			<a href="#">Gallery</a>
-			<?php /*
 
-				//foreach (GalleryModel::getAll() as $gallery) {
-					//<?= a href="gallery/$gallery->id"> $gallery->title ?>
-				}
+		<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+			<div class="container">
+				<a href="/Homepage/index" class="navbar-brand">Rachel Kirkland Illustrations</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+						<?php /*
 
-			*/ ?>
-			<!-- TODO add dropdowns for managing art, tags and gallieries -->
-			<!-- TODO add links to existing pages -->
-			<!-- TODO hide certain links when not logged in -->
-			<a href="/About_me/about_me">About Me</a>
-			<a href="/Affiliate/affiliates">Affiliates</a>
-			<a href="#">Resume</a>
-			<a href="/Contact/contact">Contact</a>
-			<?php if (!isset($_SESSION['logged_in'])) { ?>
-				<a href="/Login/login">Login</a>
-			<?php } else { ?>
-				<a href="/Login/logOut">Log Out</a>
-			<?php } ?>
-		</nav>
+							//foreach (GalleryModel::getAll() as $gallery) {
+								//<?= a href="gallery/$gallery->id"> $gallery->title ?>
+							}
+
+						*/ ?>
+	
+						<li class="nav-item"><a class="nav-link" href="/About_me/about_me">About Me</a></li>
+						<li class="nav-item"><a class="nav-link" href="/Affiliate/affiliates">Affiliates</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Resume</a></li>
+						<li class="nav-item"><a class="nav-link" href="/Contact/contact">Contact</a></li>
+					</ul>
+					<ul class="nav navbar-nav ml-auto">
+						<?php if (!isset($_SESSION['logged_in'])) { ?>
+							<li class="nav-item"><a class="nav-link" href="/Login/login">Login</a></li>
+						<?php } else { ?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="admin">
+									Admin
+									<span class="caret"></span>
+								</a>
+									<div class="dropdown-menu" aria-labelledby="admin">
+										<a class="dropdown-item" href="/Art/manage_art">Manage Art</a>
+										<a class="dropdown-item" href="/Tag/manageTags">Manage Tags</a>
+										<a class="dropdown-item" href="/Gallery/manageGalleries">Manage Galleries</a>
+									</div>
+								</li>
+							<li class="nav-item"><a class="nav-link" href="/Login/logOut">Log Out</a></li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<br/>
