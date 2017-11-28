@@ -12,7 +12,7 @@ class Art extends CI_Controller {
 		$this->load->model('Tag_model');
 		$data['tags'] = $this->Tag_model->get_tags();
 		$data['arts'] = $this->Art_model->get_arts();
-		$this->load->view("templates/header", array("title"=>"Upload Art"));
+		$this->load->view("templates/header", array("title"=>"Manage Art"));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['artUpload_form'] = $this->load->view("artUpload_form", $data, TRUE);
 		$this->load->view("manageArt", $data);
