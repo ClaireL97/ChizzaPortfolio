@@ -7,12 +7,11 @@ class Gallery extends CI_Controller {
 
 	public function gallery()
 	{
-		// based on the id or name of gallery passed in
-		// get the gallery id
-		// find all the tag_ids from gallery_tags for the gallery_id
-		// find all the art via art_tags using the tag_ids from above
-		// thus: this 1 function controls all galleries by finding the tags each gallery has and matching it against the art tags
 		$this->load->model('Gallery_model');
+		$this->load->model('Art_model');
+		$id = $this->input->post('gallery_id');
+		$data['arts'] = $this->Gallery_model->getGalleryArt();
+
 		$this->load->view("templates/header", array("title"=>"Gallery"));
 		// $data['about_me'] = $this->UserInfo_model->get_about_me(1);
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
@@ -22,26 +21,43 @@ class Gallery extends CI_Controller {
 
 	public function manageGalleries()
 	{
-		// similar to all other manages
-		// display all galleries and their gallery-tags
+		if (!isset($_SESSION['logged_in'])) redirect('/Homepage/index');
+		$this->load->model('Gallery_model');
+		$this->load->model('Tag_model');
+		$data['galleries'] = $this->Gallery_model->getGalleries();
+		$data['tags'] = $this->Tag_model->get_tags();
+		$this->load->view("templates/header", array("title"=>"Manage Galleries"));
+		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
+		$data['galleryForm'] = $this->load->view("galleryForm", $data, TRUE);
+		$this->load->view("manageGalleries", $data);
 	}
 
-	public function editGallery()
+	public function updateGallery()
 	{
+		$this->load->model('Gallery_model');
+		$id = $this->input->post('id');
+		$title= $this->input->post('title');
+		$tags = (array) $this->input->post('tags');
+		$this->Gallery_model->updateGallery($id, $title, $tags);
 
+		redirect('/Gallery/manageGalleries');
 	}
 
 	public function createGallery()
 	{
-
+		$this->load->model('Gallery_model');
+		$title = $this->input->post('title');
+		$tags = (array) $this->input->post('tags');
+		$this->Gallery_model->createGallery(array('title'=>$title), $tags);
+			redirect('/Gallery/manageGalleries');
 	}
 
 	public function deleteGallery()
 	{
+		$this->load->model('Gallery_model');
+		$id = $this->input->post('id');
+		$this->Gallery_model->deleteGallery($id);
 
+		redirect('/Gallery/manageGalleries');
 	}
-
-	// TODO fill this out with manage (display), create/delete and edit
-	// a gallery can have a tag applied to it, which will show art with the same tag
-
 }
