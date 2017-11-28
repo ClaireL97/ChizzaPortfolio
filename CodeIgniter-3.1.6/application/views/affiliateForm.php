@@ -1,15 +1,20 @@
 <?php if (isset($_SESSION['logged_in'])) { ?>
-<?= validation_errors(); ?>
-<div>
-	<?= form_open('affiliate/add_affiliate') ?>
-	<input type="text" name="name" placeholder="Name">
-	</br>
-	<textarea name="description">
-	</textarea>
-	</br>
-	<input type="text" name="url" placeholder="Affiliate's Site">
-	</br>
-	<input type="submit" name="submit" value="Add">
-	<?= form_close(); ?>
+<div class="row">
+	<div class="col-sm-6">
+		<?= validation_errors(); ?>
+		<div class="form-group">
+			<?= form_open('affiliate/add_affiliate') ?>
+			<legend>New Affiliate Form</legend>
+			<label for="affiliateName">Affiliate Name</label>
+			<input type="text" class="form-control" id="affiliateName" name="name">
+			<label for="affiliateDescription">Affiliate Description</label>
+			<textarea class="form-control" id="affiliateDescription" rows="3" name="description"></textarea>
+			<label for="affiliateUrl">Affilite's Site</label>
+			<input type="text" class="form-control" id="affiliateUrl" name="url">
+			</br>
+			<input type="submit" class="btn btn-primary" name="submit" value="Add">
+			<?= form_close(); ?>
+		</div>
+	</div>
 </div>
 <?php } ?>
