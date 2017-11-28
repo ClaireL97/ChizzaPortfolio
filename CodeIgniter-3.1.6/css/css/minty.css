@@ -138,6 +138,10 @@ body {
   background-color: #4d4d4d;
 }
 
+div.clearfix {
+  margin-top: 4rem;
+}
+
 [tabindex="-1"]:focus {
   outline: none !important;
 }
@@ -2489,8 +2493,8 @@ fieldset[disabled] a.btn {
 
 .btn-primary {
   color: #111;
-  background-color: #78C2AD;
-  border-color: #78C2AD;
+  background-color: #81E28E;
+  border-color: #81E28E;
 }
 
 .btn-primary:hover {
