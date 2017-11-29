@@ -1,13 +1,13 @@
 <p>Contact Info</p>
 <div id="contact-info">
-	<?php if (isset($_SESSION['logged_in'])) { ?>
-		<button id="show-contact-info-form" value="Edit">Edit</button>
-	<?php } ?>
 	<?= $contact_info->f_name ?>
 	<?= $contact_info->l_name ?> <br/>
 	<?= $contact_info->email ?></br>
 	<?= $contact_info->phone ?></br>
 	<?= $contact_info->profile_pic ?></br>
+	<?php if (isset($_SESSION['logged_in'])) { ?>
+		<button id="show-contact-info-form" class="btn btn-primary" value="Edit">Edit</button>
+	<?php } ?>
 </div>
 
 <?php if (isset($_SESSION['logged_in'])) { ?>
@@ -16,7 +16,7 @@
 	</div>
 <?php } ?>
 
-<p>Links to Social Media</p>
+<h2>Links to Affiliated Sites</h2>
 <?= $socialmediaForm ?>
 
 <?php foreach ($social_media as $social_media) { ?>
@@ -24,14 +24,15 @@
 	<div class="parent-div">
 		<div class="edit-social_media" style="display:none">
 			<?= form_open("contact/edit_social_media", array('class'=>'edit-social_media-form')); ?>
-			<input type="text" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
-			<br>
-			<input type="text" name="description" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
-			<br>
-			<input type="text" name="url" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
+			<legend>Edit Affiliated Site</legend>
+			<label>Site Name</label>
+			<input type="text" class="form-control" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
+			<label>Description</label>
+			<input type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
+			<label>Site URL</label>
+			<input type="text" name="url" class="form-control" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
 			<input type="hidden" value="<?=$social_media->id?>" name="id">
-			</br>
-			<input type="submit" name="submit" value="Update">
+			<input type="submit" class="btn btn-primary" name="submit" value="Update">
 			<?= form_close(); ?>
 		</div>
 		<div class="show-social_media">
@@ -39,13 +40,11 @@
 			<?= $social_media->description ?> <br/>
 			<?= $social_media->url ?></br>
 		</div>
+		<button class="edit-social_media-btn btn-primary btn">Edit</button>
 		<?= form_open("contact/remove_social_media"); ?>
 			<input type="hidden" value="<?=$social_media->id?>" name="id">
-			<input type="submit" value="Delete">
+			<input type="submit" class="btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
-		<button class="edit-social_media-btn">Edit</button>
-		<br/>
-		<!-- TODO this only seems to work for one picture -->
 	</div>
 <?php } ?>
 

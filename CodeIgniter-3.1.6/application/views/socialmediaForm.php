@@ -2,14 +2,14 @@
 <?= validation_errors(); ?>
 <div>
 	<?= form_open('contact/add_social_media') ?>
-	<input type="text" name="name" placeholder="Name">
-	</br>
-	<textarea name="description">
-	</textarea>
-	</br>
-	<input type="text" name="url" placeholder="URL">
-	</br>
-	<input type="submit" name="submit" value="Add">
+	<legend>Add Affiliated Site</legend>
+	<label for="Name">Site Name</label>
+	<input type="text" name="name" class="form-control" id="Name">
+	<label for="siteDescription">Desciption</label>
+	<textarea name="description" id="siteDescription" class="form-control" rows="3"></textarea>
+	<label for="URL">URL</label>
+	<input type="text" name="url" class="form-control" id="URL">
+	<input type="submit" name="submit" class="btn btn-primary mt-sm-2" value="Add">
 	<?= form_close(); ?>
 </div>
 <?php } ?>
