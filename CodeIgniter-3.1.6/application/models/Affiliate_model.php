@@ -11,7 +11,7 @@ Class Affiliate_model extends CI_model{
 		$this->db->delete('affiliation', array('id' => $id));
 	}
 
-	public function update_affiliate_data($id, $name, $url, $description)
+	public function update_affiliate_data($id, $name, $description, $url)
 	{
 		$data = array(
 			'name' => $name,
