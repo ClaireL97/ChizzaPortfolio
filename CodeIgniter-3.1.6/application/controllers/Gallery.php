@@ -11,7 +11,8 @@ class Gallery extends CI_Controller {
 		$this->load->model('Art_model');
 		$id = $this->input->post('gallery_id');
 		$data['arts'] = $this->Gallery_model->getGalleryArt(1);
-		$this->load->view("templates/header", array("title"=>"Gallery"));
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Gallery", "galleries"=>$galleries));
 		// $data['about_me'] = $this->UserInfo_model->get_about_me(1);
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$this->load->view("Gallery", $data);
@@ -25,7 +26,7 @@ class Gallery extends CI_Controller {
 		$this->load->model('Tag_model');
 		$data['galleries'] = $this->Gallery_model->getGalleries();
 		$data['tags'] = $this->Tag_model->get_tags();
-		$this->load->view("templates/header", array("title"=>"Manage Galleries"));
+		$this->load->view("templates/header", array("title"=>"Manage Galleries", "galleries" => $data['galleries']));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['galleryForm'] = $this->load->view("galleryForm", $data, TRUE);
 		$this->load->view("manageGalleries", $data);

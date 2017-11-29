@@ -6,7 +6,9 @@ class Homepage extends CI_Controller {
 	public function index()
 	{
 			$this->load->model('UserInfo_model');
-			$this->load->view("templates/header", array("title"=>"Home"));
+			$this->load->model('Gallery_model');
+			$galleries = $this->Gallery_model->getGalleries();
+			$this->load->view("templates/header", array("title"=>"Home", "galleries"=>$galleries));
 			$data['synopsis'] = $this->UserInfo_model->get_synopsis(1);
 
 			if ($this->session->userdata('logged_in')) {

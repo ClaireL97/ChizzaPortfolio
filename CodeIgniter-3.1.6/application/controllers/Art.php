@@ -9,10 +9,12 @@ class Art extends CI_Controller {
 	{
 		if (!isset($_SESSION['logged_in'])) redirect('/Homepage/index');
 		$this->load->model('Art_model');
+		$this->load->model('Gallery_model');
 		$this->load->model('Tag_model');
 		$data['tags'] = $this->Tag_model->get_tags();
 		$data['arts'] = $this->Art_model->get_arts();
-		$this->load->view("templates/header", array("title"=>"Manage Art"));
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Manage Art", "galleries"=>$galleries));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['artUpload_form'] = $this->load->view("artUpload_form", $data, TRUE);
 		$this->load->view("manageArt", $data);

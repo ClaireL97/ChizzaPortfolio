@@ -8,8 +8,10 @@ class Contact extends CI_Controller {
 	public function contact()
 	{
 		$this->load->model('UserInfo_model');
+		$this->load->model('Gallery_model');
 		$this->load->model('SocialMedia_model');
-		$this->load->view("templates/header", array("title"=>"Contact Info"));
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Contact Info", "galleries"=>$galleries));
 		$data['contact_info'] = $this->UserInfo_model->get_contact_info(1);
 		$data['social_media'] = $this->SocialMedia_model->get_social_media();
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);

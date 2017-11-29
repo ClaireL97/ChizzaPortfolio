@@ -10,7 +10,9 @@ class Tag extends CI_Controller {
 	{
 		$this->load->model('Tag_model');
 		$data['tags'] = $this->Tag_model->get_tags();
-		$this->load->view("templates/header", array("title"=>"Manage Tags"));
+		$this->load->model('Gallery_model');
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Manage Tags", "galleries"=>$galleries));
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['tagForm'] = $this->load->view("tagForm", NULL, TRUE);
 		$this->load->view("manageTags", $data);

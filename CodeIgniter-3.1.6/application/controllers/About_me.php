@@ -9,7 +9,9 @@ class About_me extends CI_Controller {
 	public function about_me()
 	{
 		$this->load->model('UserInfo_model');
-		$this->load->view("templates/header", array("title"=>"About Me"));
+		$this->load->model('Gallery_model');
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"About Me", "galleries"=>$galleries));
 		$data['about_me'] = $this->UserInfo_model->get_about_me(1);
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$this->load->view("aboutMe", $data);

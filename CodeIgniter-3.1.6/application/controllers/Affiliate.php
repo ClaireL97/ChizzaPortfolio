@@ -8,7 +8,9 @@ class Affiliate extends CI_Controller {
 	public function affiliates()
 	{
 		$this->load->model('Affiliate_model');
-		$this->load->view("templates/header", array("title"=>"Affiliates"));
+		$this->load->model('Gallery_model');
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Affiliates", "galleries"=>$galleries));
 		$data['affiliates'] = $this->Affiliate_model->get_affiliates();
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$data['affiliateForm'] = $this->load->view("affiliateForm", $data, TRUE);

@@ -9,6 +9,7 @@ class Login extends CI_Controller {
 	public function login()
 	{
 		$this->load->model('User_model');
+		$this->load->model('Gallery_model');
 		$this->load->library('form_validation');
 		$error_message = '';
 
@@ -32,7 +33,8 @@ class Login extends CI_Controller {
 			}
 
 		}
-		$this->load->view("templates/header", array("title"=>"Login"));
+		$galleries = $this->Gallery_model->getGalleries();
+		$this->load->view("templates/header", array("title"=>"Login", "galleries"=>$galleries));
 		$this->load->view("loginForm", array("error_message"=>$error_message));
 		$this->load->view("templates/footer");
 

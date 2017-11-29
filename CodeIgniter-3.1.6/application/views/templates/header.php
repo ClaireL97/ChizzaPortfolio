@@ -12,7 +12,18 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="galleries">
+								Galleries
+								<span class="caret"></span>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="galleries">
+							<?php foreach($galleries as $gallery) { ?>
+
+								<a class="dropdown-item" href="/Gallery/gallery/<?=$gallery->id?>"><?=$gallery->title?></a>
+							<?php } ?>
+							</div>
+						</li>
 						<?php /*
 
 							//foreach (GalleryModel::getAll() as $gallery) {
@@ -47,4 +58,5 @@
 				</div>
 			</div>
 		</div>
-		<br/>
+		<div class="clearfix"></div>
+			<div class="container">
