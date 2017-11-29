@@ -1,10 +1,12 @@
 <?= validation_errors(); ?>
 <div>
 	<?= form_open('login/login'); ?>
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	</br>
-	<input type="submit" name="submit" value="Login">
+	<legend>Login</legend>
+	<label for="username">User Name</label>
+	<input type="text" class="form-control" name="username" id="username">
+	<label for="password">Password</label>
+	<input type="password" class="form-control" name="password" id="password">
+	<input type="submit" class="btn btn-primary mt-sm-2" name="submit" value="Login">
 	<?= form_close(); ?>
 	<?= $error_message ?>
 </div>
