@@ -1,10 +1,11 @@
-<p>About Me</p>
+<h1>Rachel Kirkland</h1>
 
 <div id="about_me">
-	<?php if (isset($_SESSION['logged_in'])) { ?>
-		<button id="show-about_me-form" value="Edit">Edit</button>
-	<?php } ?>
 	<?= $about_me ?>
+	</br>
+	<?php if (isset($_SESSION['logged_in'])) { ?>
+		<button id="show-about_me-form" class="btn btn-primary" value="Edit">Edit</button>
+	<?php } ?>
 </div>
 
 <?php if (isset($_SESSION['logged_in'])) { ?>
@@ -12,11 +13,8 @@
 		<?= validation_errors(); ?>
 		<div>
 			<?= form_open('About_me/save_about_me', array("id"=>"about-me")); ?>
-			<textarea name="about_me" placeholder="About Me">
-				<?= $about_me ?>
-			</textarea>
-			</br>
-			<input type="submit" name="submit" value="Submit">
+			<textarea name="about_me" class="form-control" rows="5"><?= $about_me ?></textarea>
+			<input type="submit" class="btn btn-primary mt-sm-2" name="submit" value="Submit">
 			<?= form_close(); ?>
 		</div>
 	</div>
