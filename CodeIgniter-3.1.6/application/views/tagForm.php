@@ -1,8 +1,9 @@
 <?= validation_errors(); ?>
 <div>
 	<?= form_open('tag/create_tag'); ?>
-	<input type="text" name="tag" placeholder="tag">
-	</br>
-	<input type="submit" name="submit" value="Create Tag">
+	<legend>New Tag</legend>
+	<label for="newTag">Tag</label>
+	<input type="text" name="tag" id="newTag" class="form-control">
+	<input type="submit" name="submit" class="btn btn-primary" value="Create Tag">
 	<?= form_close(); ?>
 </div>

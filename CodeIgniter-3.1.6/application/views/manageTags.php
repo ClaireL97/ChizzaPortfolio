@@ -1,18 +1,19 @@
 <?= $tagForm ?>
 
+<h3>Tag List</h3>
 <?php foreach ($tags as $tag) { ?>
 	<?= validation_errors(); ?>
 	<div>
 		<?= form_open("tag/update_tag"); ?>
-		<input type="text" name="tag" value="<?=$tag->name?>" placeholder="<?=$tag->name?>">
+		<label for="tag">Tag Name</label>
+		<input type="text" name="tag" class="form-control" id="tag" value="<?=$tag->name?>" placeholder="<?=$tag->name?>">
 		<input type="hidden" value="<?=$tag->id?>" name="id">
-		</br>
-		<input type="submit" name="submit" value="Update">
+		<input type="submit" name="submit" class="btn btn-primary" value="Update">
 		<?= form_close(); ?>
 	</div>
 	<?= form_open("tag/delete_tag"); ?>
 		<input type="hidden" value="<?=$tag->id?>" name="id">
-		<input type="submit" value="Delete">
+		<input type="submit" class="btn btn-secondary" value="Delete">
 	<?= form_close(); ?>
 	<br/>
 <?php } ?>
