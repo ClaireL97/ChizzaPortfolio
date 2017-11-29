@@ -13,6 +13,7 @@
 		<?= validation_errors(); ?>
 		<div>
 			<?= form_open('About_me/save_about_me', array("id"=>"about-me")); ?>
+			<legend>Edit About Me</legend>
 			<textarea name="about_me" class="form-control" rows="5"><?= $about_me ?></textarea>
 			<input type="submit" class="btn btn-primary mt-sm-2" name="submit" value="Submit">
 			<?= form_close(); ?>
