@@ -1,19 +1,19 @@
-<p>Gallery</p>
+<center><span class="font-weight-bold emboss h1 text-primary"><?= $title ?></span></center>
 
 <?php
-$count = 1;
+$count = 0;
 foreach($arts as $art) {
-	if ($count-1 % 3 == 0 || $count == 1) { ?>
-		<div class="row">
+	if ($count == 0) { ?>
+		<div class="row mt-sm-2">
 	<?php } ?>
-	<div class="col-sm-3">
-		Title: <?=$art->title?> <br/>
-		<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>"> <br/>
-		Caption: <?=$art->caption?>
+	<div class="col-sm-4">
+		<img class="picture" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="100%" width="100%">
 	</div>
-	<?php if ($count % 3 == 0 || $count == count($arts)) { ?>
+	<?php if ($count == 2 || $count == count($arts)) { ?>
 		</div>
-	<?php } ?>
+	<?php 
+			$count = -1;
+		} ?>
 	<?php $count++; ?>
 <?php }
 ?>
