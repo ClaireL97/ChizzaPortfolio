@@ -48,7 +48,7 @@
 									<span class="caret"></span>
 								</a>
 									<div class="dropdown-menu" aria-labelledby="admin">
-										<a class="dropdown-item" href="/Art/manage_art">Manage Art</a>
+										<a class="dropdown-item" href="/Art/manage_art">Manage Files</a>
 										<a class="dropdown-item" href="/Tag/manageTags">Manage Tags</a>
 										<a class="dropdown-item" href="/Gallery/manageGalleries">Manage Galleries</a>
 									</div>

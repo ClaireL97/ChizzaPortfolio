@@ -11,3 +11,5 @@
 <?php } ?>
 
 <iframe src="<?=$resume?>"></iframe>
+
+<?= $footer ?>
