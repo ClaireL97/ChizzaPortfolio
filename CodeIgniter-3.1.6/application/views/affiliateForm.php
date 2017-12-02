@@ -6,11 +6,11 @@
 			<?= form_open('affiliate/add_affiliate') ?>
 			<legend>New Affiliate Form</legend>
 			<label for="affiliateName">Affiliate Name</label>
-			<input type="text" class="form-control" id="affiliateName" name="name">
+			<input required type="text" class="form-control" id="affiliateName" name="name">
 			<label for="affiliateDescription">Affiliate Description</label>
 			<textarea class="form-control" id="affiliateDescription" rows="3" name="description"></textarea>
 			<label for="affiliateUrl">Affilite's Site</label>
-			<input type="text" class="form-control" id="affiliateUrl" name="url">
+			<input required type="text" class="form-control" id="affiliateUrl" name="url">
 			</br>
 			<input type="submit" class="btn btn-primary" name="submit" value="Add">
 			<?= form_close(); ?>

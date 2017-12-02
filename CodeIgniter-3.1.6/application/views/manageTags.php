@@ -6,13 +6,13 @@
 	<div>
 		<?= form_open("tag/update_tag"); ?>
 		<label for="tag">Tag Name</label>
-		<input type="text" name="tag" class="form-control" id="tag" value="<?=$tag->name?>" placeholder="<?=$tag->name?>">
-		<input type="hidden" value="<?=$tag->id?>" name="id">
+		<input required type="text" name="tag" class="form-control" id="tag" value="<?=$tag->name?>" placeholder="<?=$tag->name?>">
+		<input required type="hidden" value="<?=$tag->id?>" name="id">
 		<input type="submit" name="submit" class="btn btn-primary" value="Update">
 		<?= form_close(); ?>
 	</div>
 	<?= form_open("tag/delete_tag"); ?>
-		<input type="hidden" value="<?=$tag->id?>" name="id">
+		<input required type="hidden" value="<?=$tag->id?>" name="id">
 		<input type="submit" class="btn btn-secondary" value="Delete">
 	<?= form_close(); ?>
 	<br/>

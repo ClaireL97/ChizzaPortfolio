@@ -1,8 +1,9 @@
 <div id="synopsis">
-	<?php if (isset($_SESSION['logged_in'])) { ?>
-		<button id="show-synopsis-form" value="Edit">Edit</button>
-	<?php } ?>
 	<?= $synopsis ?>
+	</br>
+	<?php if (isset($_SESSION['logged_in'])) { ?>
+		<button id="show-synopsis-form" class="btn btn-primary" value="Edit">Edit</button>
+	<?php } ?>
 </div>
 
 <?php if (isset($_SESSION['logged_in'])) { ?>

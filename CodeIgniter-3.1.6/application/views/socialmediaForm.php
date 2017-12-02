@@ -4,11 +4,11 @@
 	<?= form_open('contact/add_social_media') ?>
 	<legend>Add Affiliated Site</legend>
 	<label for="Name">Site Name</label>
-	<input type="text" name="name" class="form-control" id="Name">
+	<input required type="text" name="name" class="form-control" id="Name">
 	<label for="siteDescription">Desciption</label>
 	<textarea name="description" id="siteDescription" class="form-control" rows="3"></textarea>
 	<label for="URL">URL</label>
-	<input type="text" name="url" class="form-control" id="URL">
+	<input required type="text" name="url" class="form-control" id="URL">
 	<input type="submit" name="submit" class="btn btn-primary mt-sm-2" value="Add">
 	<?= form_close(); ?>
 </div>

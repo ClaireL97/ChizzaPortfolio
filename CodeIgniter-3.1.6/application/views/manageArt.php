@@ -10,9 +10,9 @@
 			<legend>Edit Upload</legend>
 			<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="42" width="42"></br>
 			<label>Title</label>
-			<input type="text" name="title" class="form-control" value="<?=$art->title?>" placeholder="<?=$art->title?>">
+			<input required type="text" name="title" class="form-control" value="<?=$art->title?>" placeholder="<?=$art->title?>">
 			<label>Caption</label>
-			<input type="text" name="caption" class="form-control" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
+			<input required type="text" name="caption" class="form-control" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
 			<label>Tags</label>
 			<select name="tags[]" multiple class="form-control">
 				<?php foreach($tags as $tag) { ?>
@@ -20,7 +20,7 @@
 						value="<?=$tag->id?>"> <?=$tag->name?> </option>
 				<?php } ?>
 			</select>
-			<input type="hidden" value="<?=$art->id?>" name="id">
+			<input required type="hidden" value="<?=$art->id?>" name="id">
 			</br>
 			<input type="submit" name="submit" class="btn btn-primary" value="Update">
 			<?= form_close(); ?>
@@ -36,7 +36,7 @@
 	</br>
 	<button class="edit-art-btn btn btn-primary">Edit</button>
 	<?= form_open("Art/delete_art"); ?>
-		<input type="hidden" value="<?=$art->id?>" name="id">
+		<input required type="hidden" value="<?=$art->id?>" name="id">
 		<input type="submit" class="btn btn-secondary" value="Delete">
 	<?= form_close(); ?>
 	<br/>

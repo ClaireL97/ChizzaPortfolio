@@ -26,12 +26,12 @@
 			<?= form_open("contact/edit_social_media", array('class'=>'edit-social_media-form')); ?>
 			<legend>Edit Affiliated Site</legend>
 			<label>Site Name</label>
-			<input type="text" class="form-control" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
+			<input required type="text" class="form-control" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
 			<label>Description</label>
-			<input type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
+			<input required type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
 			<label>Site URL</label>
-			<input type="text" name="url" class="form-control" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
-			<input type="hidden" value="<?=$social_media->id?>" name="id">
+			<input required type="text" name="url" class="form-control" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
+			<input required type="hidden" value="<?=$social_media->id?>" name="id">
 			<input type="submit" class="btn btn-primary" name="submit" value="Update">
 			<?= form_close(); ?>
 		</div>
@@ -42,7 +42,7 @@
 		</div>
 		<button class="edit-social_media-btn btn-primary btn">Edit</button>
 		<?= form_open("contact/remove_social_media"); ?>
-			<input type="hidden" value="<?=$social_media->id?>" name="id">
+			<input required type="hidden" value="<?=$social_media->id?>" name="id">
 			<input type="submit" class="btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
 	</div>
