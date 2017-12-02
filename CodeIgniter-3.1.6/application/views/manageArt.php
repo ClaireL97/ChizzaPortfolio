@@ -12,7 +12,7 @@
 			<label>Title</label>
 			<input required type="text" name="title" class="form-control" value="<?=$art->title?>" placeholder="<?=$art->title?>">
 			<label>Caption</label>
-			<input required type="text" name="caption" class="form-control" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
+			<input type="text" name="caption" class="form-control" value="<?=$art->caption?>" placeholder="<?=$art->caption?>">
 			<label>Tags</label>
 			<select name="tags[]" multiple class="form-control">
 				<?php foreach($tags as $tag) { ?>

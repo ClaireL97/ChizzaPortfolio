@@ -10,7 +10,7 @@
 			<label for="affiliateDescription">Affiliate Description</label>
 			<textarea class="form-control" id="affiliateDescription" rows="3" name="description"></textarea>
 			<label for="affiliateUrl">Affilite's Site</label>
-			<input required type="text" class="form-control" id="affiliateUrl" name="url">
+			<input type="text" class="form-control" id="affiliateUrl" name="url">
 			</br>
 			<input type="submit" class="btn btn-primary" name="submit" value="Add">
 			<?= form_close(); ?>

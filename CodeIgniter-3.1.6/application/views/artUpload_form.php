@@ -5,7 +5,7 @@
 	<label>Title</label>
 	<input required type="text" name="title" class="form-control" placeholder="Title">
 	<label>Caption</label>
-	<input required type="text" name="caption" class="form-control" placeholder="Caption">
+	<input type="text" name="caption" class="form-control" placeholder="Caption">
 	<label>Tags for Upload</label>
 	<select multiple name="tags[]" class="form-control">
 		<?php foreach ($tags as $tag) { ?>

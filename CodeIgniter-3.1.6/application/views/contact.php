@@ -28,7 +28,7 @@
 			<label>Site Name</label>
 			<input required type="text" class="form-control" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
 			<label>Description</label>
-			<input required type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
+			<input  type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
 			<label>Site URL</label>
 			<input required type="text" name="url" class="form-control" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
 			<input required type="hidden" value="<?=$social_media->id?>" name="id">
