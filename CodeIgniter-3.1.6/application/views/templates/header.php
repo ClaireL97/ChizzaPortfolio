@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title> <?= $title ?> </title>
+		<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/css/lightbox.css">
 		<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/css/minty.css">
 	</head>
 	<body>
