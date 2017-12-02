@@ -1,5 +1,3 @@
-<p>Upload art</p>
-
 <?= $artUpload_form?>
 
 <?php foreach ($arts as $art) { ?>
