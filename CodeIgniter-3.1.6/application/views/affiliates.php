@@ -25,8 +25,8 @@
 					<?= $affiliate->url ?></br>
 				</div>
 				<div class="row">
-					<button class="edit-affiliate-btn btn btn-primary mr-sm-2">Edit</button>
 					<?php if (isset($_SESSION['logged_in'])) { ?>
+					<button class="edit-affiliate-btn btn btn-primary mr-sm-2">Edit</button>
 					<?= form_open("Affiliate/remove_affiliate", array("class"=>"delete-affiliate")); ?>
 						<input required type="hidden" value="<?=$affiliate->id?>" name="id">
 						<input type="submit" class="btn btn-secondary" value="Delete">
