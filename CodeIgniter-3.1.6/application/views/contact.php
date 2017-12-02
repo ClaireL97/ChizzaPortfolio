@@ -4,7 +4,6 @@
 	<?= $contact_info->l_name ?> <br/>
 	<?= $contact_info->email ?></br>
 	<?= $contact_info->phone ?></br>
-	<?= $contact_info->profile_pic ?></br>
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button id="show-contact-info-form" class="btn btn-primary" value="Edit">Edit</button>
 	<?php } ?>
@@ -17,11 +16,23 @@
 <?php } ?>
 
 <h2>Links to Affiliated Sites</h2>
+<?php if (isset($_SESSION['logged_in'])) { ?>
+<div class="mediaForm" style="display:none">
 <?= $socialmediaForm ?>
-
+</div>
+<button class="addNew btn btn-success">Add new</button>
+<?php } ?>
+<?php
+$count = 0;
+?>
 <?php foreach ($social_media as $social_media) { ?>
-	<?= validation_errors(); ?>
+<?php if ($count == 0) { ?>
+	<div class="row">
+<?php } ?>
+	<div class="col-sm-4">
 	<div class="parent-div">
+	<?php if (isset($_SESSION['logged_in'])) { ?>
+	<?= validation_errors(); ?>
 		<div class="edit-social_media" style="display:none">
 			<?= form_open("contact/edit_social_media", array('class'=>'edit-social_media-form')); ?>
 			<legend>Edit Affiliated Site</legend>
@@ -35,17 +46,27 @@
 			<input type="submit" class="btn btn-primary" name="submit" value="Update">
 			<?= form_close(); ?>
 		</div>
+	<?php } ?>
 		<div class="show-social_media">
-			<?= $social_media->name ?> <br/>
+			<a href="<?=$social_media->url?>"><?= $social_media->name ?></a> <br/>
 			<?= $social_media->description ?> <br/>
-			<?= $social_media->url ?></br>
-		</div>
+			</div>
+		<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button class="edit-social_media-btn btn-primary btn">Edit</button>
 		<?= form_open("contact/remove_social_media"); ?>
 			<input required type="hidden" value="<?=$social_media->id?>" name="id">
 			<input type="submit" class="btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
+		<?php } ?>
+		</div>
 	</div>
+<?php if ($count == 2) { ?>
+	</div><br/>
+<?php
+	$count = -1; 
+	}
+	$count++;
+ ?>
 <?php } ?>
 
 
@@ -68,6 +89,11 @@ $(document).ready(function(){
 		$editDiv = $(this).parent();
 		$editDiv.find('.show-social_media').hide();
 		$editDiv.find('.edit-social_media').show();
+		$(this).hide();
+	});
+
+	$(".addNew").click(function(e) {
+		$(".mediaForm").show();
 		$(this).hide();
 	});
 
