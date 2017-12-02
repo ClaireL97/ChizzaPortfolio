@@ -19,6 +19,9 @@ foreach($arts as $art) {
 	<?php $count++;
 		  $number++; ?>
 <?php }
+if ($count != -1) { // close the unclosed div-row ?>
+	</div>
+<?php }
 $number = 1; // reset to 1 for the next set of loops
 ?>
 
