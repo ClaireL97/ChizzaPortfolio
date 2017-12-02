@@ -9,7 +9,6 @@
 	<?= form_close(); ?>
 </div>
 <?php } ?>
-
-<iframe src="<?=$resume?>"></iframe>
+<embed src="<?=base_url(array_slice(explode('/', $resume), -3, 3, true))?>" width="1000" height="1000" type="application/pdf">
 
 <?= $footer ?>
