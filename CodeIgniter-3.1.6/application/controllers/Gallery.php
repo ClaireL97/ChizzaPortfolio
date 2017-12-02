@@ -13,8 +13,13 @@ class Gallery extends CI_Controller {
 		$pageNum = $this->uri->segment(4, 1);
 		$data['arts'] = $this->Gallery_model->getGalleryArt($id, $pageNum);
 		$galleries = $this->Gallery_model->getGalleries();
+		foreach($galleries as $gallery) {
+			if ($gallery->id == $id) {
+				$data['title'] = $gallery->title;
+				break;
+			}
+		}
 		$this->load->view("templates/header", array("title"=>"Gallery", "galleries"=>$galleries));
-		// $data['about_me'] = $this->UserInfo_model->get_about_me(1);
 		$data['footer'] = $this->load->view("templates/footer", NULL, TRUE);
 		$this->load->view("gallery", $data);
 
