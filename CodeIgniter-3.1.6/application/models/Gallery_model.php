@@ -3,7 +3,6 @@ Class Gallery_model extends CI_model{
 
 	public function getGalleries()
 	{
-
 		$galleries = $this->db->select('*')->from('gallery')->get()->result();
 		foreach($galleries as $gallery) {
 			$gallery_tags = $this->db->select('*')->from('gallery_tags')
@@ -21,13 +20,15 @@ Class Gallery_model extends CI_model{
 	public function getGalleryArt($gallery_id, $pageNumber)
 	{
 		$limit = 12;
-		$this->db->select('*')->from('art');
-		$this->db->join('art_tag','art.id = art_tag.id');
-		$this->db->join('gallery','gallery.id = art_tag.tag_id');
-		$this->db->join('gallery', 'gallery.id = gallery_tags.gallery_id');
-		$this->db->where('gallery.id = $gallery_id');
-		$this->db->limit($limit, ($pageNumber * $limit));
-		return $this->db->get()->result();
+		$sql = "select distinct art.id, art.* from art left join art_tag on art.id = art_tag.art_id left join gallery_tags on gallery_tags.tag_id = art_tag.tag_id where gallery_tags.gallery_id = $gallery_id and art_tag.tag_id = gallery_tags.tag_id limit $limit offset " . ($pageNumber-1)*$limit ;
+		$data = $this->db->query($sql)->result();
+		// $this->db->select('*')->from('art');
+		// $this->db->join('art_tag','art.id = art_tag.tag_id');
+		// $this->db->join('gallery_tags','gallery_tags.tag_id = art_tag.tag_id');
+		// $this->db->join('gallery', 'gallery.id = gallery_tags.gallery_id');
+		// $this->db->where('gallery_tags.gallery_id = ' . $gallery_id);
+		// $this->db->limit($limit, (($pageNumber-1) * $limit));
+		return $data;
 	}
 
 	public function getGalleryTags($gallery_id)
