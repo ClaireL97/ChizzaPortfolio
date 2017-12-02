@@ -1,4 +1,4 @@
-<center><span class="font-weight-bold emboss h1 text-primary"><?= $title ?></span></center>
+<center><span class="font-weight-bold emboss h1 text-primary"><?= $gallery->title ?></span></center>
 
 <?php
 $count = 0;
@@ -42,13 +42,25 @@ $number = 1; // reset to 1 for the next set of loops
     <div class="caption-container">
       <p id="caption"></p>
     </div>
-
+<div class="row">
     <?php foreach($arts as $art) { ?>
 	    <div class="columnLightBox">
-	      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" alt="<?=$art->title?>" width="25%">
+	    <div class="col-sm-1">
+	      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" alt="<?=$art->title?>">
+	    </div>
 	    </div>
     	<?php $number++;
     } ?>
+    </div>
   </div>
 </div>
+<?php if ($pageNum > 1) { ?>
+<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum - 1?>">Previous </a>
+<?php } ?>
+<?php for($i = 1; $i < ($total->total%$max); $i++) { ?>
+	<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$i?>"><?=$i?></a>
+<?php } ?>
+<?php if ($total->total > $max) { ?>
+<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum + 1?>">Next </a>
+<?php } ?>
 <?=$footer?>
