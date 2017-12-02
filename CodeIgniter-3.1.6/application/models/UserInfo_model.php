@@ -73,5 +73,23 @@ Class UserInfo_model extends CI_model{
 
 	}
 
+	public function get_resume($user_id)
+	{
+		$this->db->select('resume');
+		$this->db->from('user_info');
+		$this->db->where('user_id', $user_id);
+		$resume = $this->db->get();
+		return $resume->row()->resume;
+	}
+
+	public function save_resume($user_id, $resume)
+	{
+		$data = array(
+			'resume'=> $resume
+		);
+		$this->db->where('user_id', $user_id);
+		$this->db->update('user_info', $data);
+	}
+
 }
 

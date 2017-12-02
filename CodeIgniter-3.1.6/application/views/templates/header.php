@@ -35,7 +35,7 @@
 	
 						<li class="nav-item"><a class="nav-link emboss" href="/About_me/about_me">About Me</a></li>
 						<li class="nav-item"><a class="nav-link emboss" href="/Affiliate/affiliates">Affiliates</a></li>
-						<li class="nav-item"><a class="nav-link emboss" href="#">Resume</a></li>
+						<li class="nav-item"><a class="nav-link emboss" href="/Resume/resume">Resume</a></li>
 						<li class="nav-item"><a class="nav-link emboss" href="/Contact/contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav ml-auto">
