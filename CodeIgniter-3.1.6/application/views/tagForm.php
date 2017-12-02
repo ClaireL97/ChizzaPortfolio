@@ -1,5 +1,5 @@
 <?= validation_errors(); ?>
-<div>
+<div class="col-sm-3">
 	<?= form_open('tag/create_tag'); ?>
 	<legend>New Tag</legend>
 	<label for="newTag">Tag</label>
