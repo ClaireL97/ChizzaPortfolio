@@ -2361,6 +2361,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   width: 100%;
 }
 
+.picture {
+  border: 3px outset #81E28E;
+}
+
 @media (min-width: 576px) {
   .form-inline label {
     display: -webkit-box;
@@ -8714,11 +8718,15 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .text-white {
-  color: #fff !important;
+  color: #dddddd !important;
 }
 
 .text-primary {
-  color: #78C2AD !important;
+  color: #81E28E !important;
+}
+
+.emboss {
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.6), 1px 0px 0px rgba(32, 32, 32, 0.4);
 }
 
 a.text-primary:focus, a.text-primary:hover {
