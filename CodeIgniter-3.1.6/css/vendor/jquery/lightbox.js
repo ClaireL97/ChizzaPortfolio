@@ -19,7 +19,7 @@ $(document).ready(function() {
   });
 
   var slideIndex = 1;
-  showSlides(slideIndex);
+  //showSlides(slideIndex);
 
   $(".prev").click(function(e) {
     plusSlides(-1);
