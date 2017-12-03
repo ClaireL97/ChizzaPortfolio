@@ -29,7 +29,7 @@
 					<button class="edit-affiliate-btn btn btn-primary mr-sm-2">Edit</button>
 					<?= form_open("Affiliate/remove_affiliate", array("class"=>"delete-affiliate")); ?>
 						<input required type="hidden" value="<?=$affiliate->id?>" name="id">
-						<input type="submit" class="btn btn-secondary" value="Delete">
+						<input type="submit" class="delete btn btn-secondary" value="Delete">
 					<?= form_close(); ?>
 					<?php } ?>
 				</div>
@@ -57,6 +57,14 @@ $(document).ready(function(){
 		$editDiv.find('.show-affiliates').show();
 		$editDiv.find('.edit-affiliate').hide();
 		$editDiv.find('.edit-affiliate-btn').show();
+	});
+
+	$(document).on('click', '.delete', function(e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this?')) {
+			$(this).closest('form').submit();
+		}
+		return false;
 	});
 
 });

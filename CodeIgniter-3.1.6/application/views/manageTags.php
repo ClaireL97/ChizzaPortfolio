@@ -12,7 +12,7 @@
 		<?= form_close(); ?>
 		<?= form_open("tag/delete_tag"); ?>
 			<input required type="hidden" value="<?=$tag->id?>" name="id">
-			<input type="submit" class="btn btn-secondary" value="Delete">
+			<input type="submit" class="delete btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
 	</div>
 	<br/>
@@ -20,9 +20,14 @@
 
 <?=$footer?>
 
-
-
-<!-- use jquery to create a confirm-delete:
-	on <a.class.click> e.preventDefault()
-	then use a confirm dialogue to get user choice
-	then if yes, use ajax to call <this.href> -->
+<script>
+$(document).ready(function() {
+	$(document).on('click', '.delete', function(e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this?')) {
+			$(this).closest('form').submit();
+		}
+		return false;
+	});
+});
+</script>

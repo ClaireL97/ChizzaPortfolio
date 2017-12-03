@@ -1,9 +1,13 @@
-<p>Contact Info</p>
+<h1>Contact Rachel Kirkland</h1>
 <div id="contact-info">
-	<?= $contact_info->f_name ?>
-	<?= $contact_info->l_name ?> <br/>
-	<?= $contact_info->email ?></br>
-	<?= $contact_info->phone ?></br>
+<!-- 	<?= $contact_info->f_name ?>
+	<?= $contact_info->l_name ?> <br/> -->
+	<?php if (!empty($contact_info->email)) { ?>
+	Email: <a href="mailTo:<?= $contact_info->email ?>"><?=$contact_info->email?></a></br>
+	<?php } ?>
+	<?php if (!empty($contact_info->phone)) { ?>
+		Phone: <?= $contact_info->phone ?></br>
+	<?php } ?>
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button id="show-contact-info-form" class="btn btn-primary" value="Edit">Edit</button>
 	<?php } ?>
@@ -14,8 +18,6 @@
 		<?= $contactForm ?>
 	</div>
 <?php } ?>
-
-<h2>Links to Affiliated Sites</h2>
 <?php if (isset($_SESSION['logged_in'])) { ?>
 <div class="mediaForm" style="display:none">
 <?= $socialmediaForm ?>
@@ -48,14 +50,13 @@ $count = 0;
 		</div>
 	<?php } ?>
 		<div class="show-social_media">
-			<a href="<?=$social_media->url?>"><?= $social_media->name ?></a> <br/>
-			<?= $social_media->description ?> <br/>
+			<?=$social_media->name?>: <a href="<?=$social_media->url?>"><?= $social_media->url ?></a> <br/>
 			</div>
 		<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button class="edit-social_media-btn btn-primary btn">Edit</button>
 		<?= form_open("contact/remove_social_media"); ?>
 			<input required type="hidden" value="<?=$social_media->id?>" name="id">
-			<input type="submit" class="btn btn-secondary" value="Delete">
+			<input type="submit" class="delete btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
 		<?php } ?>
 		</div>
@@ -102,6 +103,14 @@ $(document).ready(function(){
 		$editDiv.find('.show-social_medias').show();
 		$editDiv.find('.edit-social_media').hide();
 		$editDiv.find('.edit-social_media-btn').show();
+	});
+
+	$(document).on('click', '.delete', function(e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this?')) {
+			$(this).closest('form').submit();
+		}
+		return false;
 	});
 });
 

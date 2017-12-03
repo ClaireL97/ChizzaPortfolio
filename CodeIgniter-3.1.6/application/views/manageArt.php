@@ -35,7 +35,7 @@
 	<button class="edit-art-btn btn btn-primary">Edit</button>
 	<?= form_open("Art/delete_art"); ?>
 		<input required type="hidden" value="<?=$art->id?>" name="id">
-		<input type="submit" class="btn btn-secondary" value="Delete">
+		<input type="submit" class="delete btn btn-secondary" value="Delete">
 	<?= form_close(); ?>
 	<br/>
 <?php } ?>
@@ -57,6 +57,14 @@ $(document).ready(function(){
 		$editDiv.find('.show-art').show();
 		$editDiv.find('.edit-art').hide();
 		$editDiv.find('.edit-art-btn').show();
+	});
+
+	$(document).on('click', '.delete', function(e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this?')) {
+			$(this).closest('form').submit();
+		}
+		return false;
 	});
 
 });
