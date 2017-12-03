@@ -6,10 +6,12 @@ $max = count($arts); // to show X / <max>
 $number = 1;
 foreach($arts as $art) {
 	if ($count == 0) { ?>
-		<div class="row mt-sm-2">
+		<div class="row mt-sm-2 valign-items">
 	<?php } ?>
 	<div class="col-sm-4">
-		<img class="picture hover-shadow" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" height="100%" width="100%">
+	<center>
+		<img class="picture full-size hover-shadow" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" height="100%" width="100%">
+		</center>
 	</div>
 	<?php if ($count == 2 || $count == count($arts)) { ?>
 		</div>
@@ -32,7 +34,7 @@ $number = 1; // reset to 1 for the next set of loops
 	<?php foreach($arts as $art) { ?>
     <div class="mySlides">
       <div class="numbertext"><?= $number ?> / <?= $max ?></div>
-      <img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" style="width:100%">
+      <center><img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="600px"></center>
     </div>
     	<?php 
     	$number++;
@@ -45,25 +47,29 @@ $number = 1; // reset to 1 for the next set of loops
     <div class="caption-container">
       <p id="caption"></p>
     </div>
-<div class="row">
-    <?php foreach($arts as $art) { ?>
-	    <div class="columnLightBox">
-	    <div class="col-sm-1">
-	      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" alt="<?=$art->title?>">
-	    </div>
-	    </div>
-    	<?php $number++;
-    } ?>
+	<div class="row valign-items">
+	<div style="margin-left:35px"></div>
+	    <?php foreach($arts as $art) { ?>
+		    <div class="columnLightBox">
+		      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" alt="<?=$art->title?>" width="100%" height="auto">
+		    </div>
+	    	<?php $number++;
+	    } ?>
     </div>
   </div>
 </div>
+<br/>
+<center>
+<h1>
 <?php if ($pageNum > 1) { ?>
-<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum - 1?>">Previous </a>
+<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum - 1?>">&#10094; </a>
 <?php } ?>
-<?php for($i = 1; $i < ($total->total%$max); $i++) { ?>
+<?php for($i = 1; $i < ($total%9)-1; $i++) { ?>
 	<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$i?>"><?=$i?></a>
 <?php } ?>
-<?php if ($total->total > $max) { ?>
-<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum + 1?>">Next </a>
+<?php if ($total > 9*($pageNum)) { ?>
+<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum + 1?>">&#10095; </a>
 <?php } ?>
+</h1>
+</center>
 <?=$footer?>

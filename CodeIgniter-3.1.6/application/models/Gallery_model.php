@@ -22,8 +22,12 @@ Class Gallery_model extends CI_model{
 		$limit = 9;
 		$sql = "select art.* from art left join art_tag on art.id = art_tag.art_id left join gallery_tags on gallery_tags.tag_id = art_tag.tag_id where gallery_tags.gallery_id = $gallery_id and art_tag.tag_id = gallery_tags.tag_id group by art.id limit $limit offset " . ($pageNumber-1)*$limit ;
 		$data = $this->db->query($sql)->result();
-		$count = "select count(art.id) as total from art left join art_tag on art.id = art_tag.art_id left join gallery_tags on gallery_tags.tag_id = art_tag.tag_id where gallery_tags.gallery_id = $gallery_id and art_tag.tag_id = gallery_tags.tag_id group by art.id";
-		$total = $this->db->query($count)->row();
+		$count = "select count(distinct art.id) as total from art left join art_tag on art.id = art_tag.art_id left join gallery_tags on gallery_tags.tag_id = art_tag.tag_id where gallery_tags.gallery_id = $gallery_id and art_tag.tag_id = gallery_tags.tag_id";
+		$totalById = $this->db->query($count)->result();
+		$total = 0;
+		foreach ($totalById as $totalArt) {
+			$total += $totalArt->total;
+		}
 		// $this->db->select('*')->from('art');
 		// $this->db->join('art_tag','art.id = art_tag.tag_id');
 		// $this->db->join('gallery_tags','gallery_tags.tag_id = art_tag.tag_id');

@@ -10,7 +10,19 @@
 
 .columnLightBox {
   float: left;
-  width: 25%;
+  width: 10.5%;
+}
+
+img.full-size {
+  width:auto;
+  height:auto;
+  max-height: 230px;
+  max-width: 230px;
+}
+
+div.valign-items {
+  display: flex;
+  align-items: center;
 }
 
 /* The Modal (background) */
