@@ -1,13 +1,16 @@
 $(document).ready(function() {
+
+  var slideIndex = 1;
+
   $(document).on('click', '.picture', function(e) {
     $("#myModal").show();
     var num = $(this).attr('data-number');
-    currentSlide(num);
+    showSlides(slideIndex = num);
   });
 
   $(document).on('click', '.demo', function(e) {
     var num = $(this).attr('data-number');
-    currentSlide(num);
+    showSlides(slideIndex = num);
   });
 
   $('.close').click(function(e) {
@@ -18,24 +21,15 @@ $(document).ready(function() {
     if (e.which == 27) $("#myModal").hide();
   });
 
-  var slideIndex = 1;
-  //showSlides(slideIndex);
 
   $(".prev").click(function(e) {
-    plusSlides(-1);
+    showSlides(slideIndex -= 1);
   });
 
   $(".next").click(function(e) {
-    plusSlides(1);
+    slideIndex++;
+    showSlides(slideIndex);
   });
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
 
   function showSlides(n) {
     var i;
