@@ -64,7 +64,7 @@ $number = 1; // reset to 1 for the next set of loops
 <?php if ($pageNum > 1) { ?>
 <a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$pageNum - 1?>">&#10094; </a>
 <?php } ?>
-<?php for($i = 1; $i < ($total%9); $i++) { ?>
+<?php for($i = 1; $i < ((int)$total/9)+1; $i++) { ?>
 	<a href="<?=base_url()?>Gallery/gallery/<?=$gallery->id?>/<?=$i?>"><?=$i?></a>
 <?php } ?>
 <?php if ($total > 9*($pageNum)) { ?>
