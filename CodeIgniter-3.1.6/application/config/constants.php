@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+defined('UPLOAD_PATH') or define('UPLOAD_PATH', '/home/coolcat/www/rachelkirkland.ariea.net/ChizzaPortfolio/CodeIgniter-3.1.6/application/uploads');
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

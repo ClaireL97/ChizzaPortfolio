@@ -30,9 +30,9 @@ class Art extends CI_Controller {
 		ini_set('memory_limit', '64M');
 		$this->load->model('Art_model');
 		$user_id = $this->session->userdata('user_id');
-		$config['upload_path'] = '/var/www/chizza_portfolio/CodeIgniter-3.1.6/application/uploads/';
+		$config['upload_path'] = UPLOAD_PATH;
 		$config['allowed_types'] = "*";
-		$config['max_size'] = 64;
+		$config['max_size'] = 64*1024*1024; // 64mb
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('image'))
