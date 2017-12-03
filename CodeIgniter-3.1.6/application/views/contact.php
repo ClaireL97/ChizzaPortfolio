@@ -1,7 +1,5 @@
-<h1>Contact Rachel Kirkland</h1>
+<h1>Contact <?= $contact_info->f_name ?> <?= $contact_info->l_name ?></h1>
 <div id="contact-info">
-<!-- 	<?= $contact_info->f_name ?>
-	<?= $contact_info->l_name ?> <br/> -->
 	<?php if (!empty($contact_info->email)) { ?>
 	Email: <a href="mailTo:<?= $contact_info->email ?>"><?=$contact_info->email?></a></br>
 	<?php } ?>

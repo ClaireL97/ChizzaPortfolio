@@ -1,4 +1,5 @@
-<h1>Rachel Kirkland</h1>
+<h1><?= $contact_info->f_name ?>
+	<?= $contact_info->l_name ?></h1>
 
 <div id="about_me">
 	<?= $about_me ?>
