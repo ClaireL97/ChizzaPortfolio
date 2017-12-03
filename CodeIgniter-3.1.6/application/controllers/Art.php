@@ -5,12 +5,17 @@ class Art extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function manage_art()
+	public function manage_art($err = null)
 	{
 		if (!isset($_SESSION['logged_in'])) redirect('/Homepage/index');
 		$this->load->model('Art_model');
 		$this->load->model('Gallery_model');
 		$this->load->model('Tag_model');
+		if (isset($err)) {
+			$data['error'] = $err;
+		} else {
+			$data['error'] = ''; // so the view doesnt error
+		}
 		$data['tags'] = $this->Tag_model->get_tags();
 		$data['arts'] = $this->Art_model->get_arts();
 		$galleries = $this->Gallery_model->getGalleries();
@@ -22,10 +27,12 @@ class Art extends CI_Controller {
 
 	public function upload_art()
 	{
+		ini_set('memory_limit', '64M');
 		$this->load->model('Art_model');
 		$user_id = $this->session->userdata('user_id');
 		$config['upload_path'] = '/var/www/chizza_portfolio/CodeIgniter-3.1.6/application/uploads/';
 		$config['allowed_types'] = "*";
+		$config['max_size'] = 64;
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('image'))
@@ -45,6 +52,7 @@ class Art extends CI_Controller {
 
 		} else {
 			$err = $this->upload->display_errors();
+			$this->manage_art($err);
 		}
 
 	}

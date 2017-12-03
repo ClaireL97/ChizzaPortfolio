@@ -1,5 +1,5 @@
+<span class="label-danger"><?= $error ?></span>
 <?= $artUpload_form?>
-
 <?php foreach ($arts as $art) { ?>
 	<?= validation_errors(); ?>
 	<div class="parent-div">
