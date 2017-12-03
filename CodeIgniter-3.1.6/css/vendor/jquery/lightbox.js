@@ -54,6 +54,6 @@ $(document).ready(function() {
     $(slides[slideIndex-1]).show();
     // dots[slideIndex-1].className += " active";
     $(dots[slideIndex-1]).addClass('active');
-    captionText.text($(dots[slideIndex-1]).alt);
+    captionText.text($(dots[slideIndex-1]).attr('alt'));
   }
 });
