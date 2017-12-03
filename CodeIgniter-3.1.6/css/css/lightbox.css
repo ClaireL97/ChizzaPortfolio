@@ -12,8 +12,10 @@
   float: left;
   width: 10.5%;
 }
-
-img.full-size {
+.modal-image {
+  width: auto;
+}
+.full-size {
   width:auto;
   height:auto;
   max-height: 230px;

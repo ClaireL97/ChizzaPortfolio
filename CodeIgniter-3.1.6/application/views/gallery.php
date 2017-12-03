@@ -10,7 +10,11 @@ foreach($arts as $art) {
 	<?php } ?>
 	<div class="col-sm-4">
 	<center>
+		<?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
 		<img class="picture full-size hover-shadow" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" height="100%" width="100%">
+		<?php } else { ?>
+		<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=100&toolbar=0" width="100%" height="200%" class="picture full-size hover-shadow" type="application/pdf">
+		<?php } ?>
 		</center>
 	</div>
 	<?php if ($count == 2 || $count == count($arts)) { ?>
@@ -34,7 +38,13 @@ $number = 1; // reset to 1 for the next set of loops
 	<?php foreach($arts as $art) { ?>
     <div class="mySlides">
       <div class="numbertext"><?= $number ?> / <?= $max ?></div>
-      <center><img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="600px"></center>
+      <center>
+      <?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
+      	<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="600px" class="modal-img">
+      <?php } else { ?>
+		<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=300" width="100%" height="600px" type="application/pdf">
+		<?php } ?>
+      </center>
     </div>
     	<?php 
     	$number++;
@@ -51,7 +61,11 @@ $number = 1; // reset to 1 for the next set of loops
 	<div style="margin-left:35px"></div>
 	    <?php foreach($arts as $art) { ?>
 		    <div class="columnLightBox">
+		    <?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
 		      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" alt="<?=$art->title?>" width="100%" height="auto">
+		     <?php } else { ?>
+				<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=50&toolbar=0" width="200%" height="100%" class="demo" type="application/pdf" alt="<?=$art->title?>">
+			<?php } ?>
 		    </div>
 	    	<?php $number++;
 	    } ?>
