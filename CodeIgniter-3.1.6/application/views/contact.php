@@ -1,5 +1,5 @@
 <h1>Contact <?= $contact_info->f_name ?> <?= $contact_info->l_name ?></h1>
-<div id="contact-info">
+<h5><div id="contact-info">
 	<?php if (!empty($contact_info->email)) { ?>
 	Email: <a href="mailTo:<?= $contact_info->email ?>"><?=$contact_info->email?></a></br>
 	<?php } ?>
@@ -9,7 +9,7 @@
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button id="show-contact-info-form" class="btn btn-primary" value="Edit">Edit</button>
 	<?php } ?>
-</div>
+</div></h5>
 
 <?php if (isset($_SESSION['logged_in'])) { ?>
 	<div id="contact-info-form-div" style="display:none">
@@ -29,7 +29,7 @@ $count = 0;
 <?php if ($count == 0) { ?>
 	<div class="row">
 <?php } ?>
-	<div class="col-sm-4">
+	<div>
 	<div class="parent-div">
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 	<?= validation_errors(); ?>
@@ -47,9 +47,9 @@ $count = 0;
 			<?= form_close(); ?>
 		</div>
 	<?php } ?>
-		<div class="show-social_media">
+		<h5><div class="show-social_media">
 			<?=$social_media->name?>: <a href="<?=$social_media->url?>"><?= $social_media->url ?></a> <br/>
-			</div>
+			</div></h5>
 		<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button class="edit-social_media-btn btn-primary btn">Edit</button>
 		<?= form_open("contact/remove_social_media"); ?>
@@ -57,6 +57,7 @@ $count = 0;
 			<input type="submit" class="delete btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
 		<?php } ?>
+		</div>
 		</div>
 	</div>
 <?php if ($count == 2) { ?>

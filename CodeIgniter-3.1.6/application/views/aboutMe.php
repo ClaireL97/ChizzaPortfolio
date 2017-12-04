@@ -2,7 +2,7 @@
 	<?= $contact_info->l_name ?></h1>
 
 <div id="about_me">
-	<?= $about_me ?>
+	<h5><?= $about_me ?></h5>
 	</br>
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 		<button id="show-about_me-form" class="btn btn-primary" value="Edit">Edit</button>
