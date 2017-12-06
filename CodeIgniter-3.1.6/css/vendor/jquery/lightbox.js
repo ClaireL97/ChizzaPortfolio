@@ -51,7 +51,7 @@ $(document).ready(function() {
 	var title = $(dots[slideIndex-1]).attr('data-title');
 	var caption = $(dots[slideIndex-1]).attr('data-caption');
 	if (caption.length > 0) {
-		caption = " - " + caption;
+		caption = " <br> " + caption;
 	}
     captionText.html("<i>" + title + "</i>" + caption);
   }
