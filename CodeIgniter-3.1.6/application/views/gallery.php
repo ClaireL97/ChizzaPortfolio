@@ -38,10 +38,10 @@ $number = 1; // reset to 1 for the next set of loops
 		<div style="margin-left:35px"></div>
 	    <?php foreach($arts as $art) { ?>
 	    	<?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
-		    	<div class="columnLightBox demo" style="background-image: url('<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>');" data-number="<?=$number?>" data-title="<?=$art->title?>" data-caption="<?=$art->caption?>"></div>
+		    	<div class="columnLightBox demo" style="background-image: url('<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>');" data-number="<?=$number?>" data-title="<?=htmlentities($art->title)?>" data-caption="<?=htmlentities($art->caption)?>"></div>
 		    <?php } else { ?>
 		    	<div class="columnLightBox">
-						<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=50&toolbar=0" width="200%" height="100%" class="demo" type="application/pdf" alt="<?=$art->title?>">
+						<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=50&toolbar=0" width="200%" height="100%" class="demo" type="application/pdf" alt="<?=htmlentities($art->title)?>">
 					</div>
 				<?php } ?>
 	    <?php $number++;

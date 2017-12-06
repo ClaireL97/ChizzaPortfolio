@@ -5,7 +5,7 @@
 	<div class="col-sm-3">
 		<?= form_open("gallery/updateGallery"); ?>
 		<label for="title">Gallery Title</label>
-		<input required type="text" name="title" class="form-control" id="title" value="<?=$gallery->title?>" placeholder="<?=$gallery->title?>">
+		<input required type="text" name="title" class="form-control" id="title" value="<?=htmlentities($gallery->title)?>" placeholder="<?=htmlentities($gallery->title)?>">
 		<input required type="hidden" value="<?=$gallery->id?>" name="id">
 		<label>Tags</label>
 			<select name="tags[]" multiple class="form-control">

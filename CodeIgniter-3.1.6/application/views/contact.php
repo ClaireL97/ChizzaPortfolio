@@ -33,11 +33,11 @@ $count = 0;
 			<?= form_open("contact/edit_social_media", array('class'=>'edit-social_media-form')); ?>
 			<legend>Edit Affiliated Site</legend>
 			<label>Site Name</label>
-			<input required type="text" class="form-control" name="name" value="<?=$social_media->name?>" placeholder="<?=$social_media->name?>">
+			<input required type="text" class="form-control" name="name" value="<?=htmlentities($social_media->name)?>" placeholder="<?=htmlentities($social_media->name)?>">
 			<label>Description</label>
-			<input  type="text" name="description" class="form-control" value="<?=$social_media->description?>" placeholder="<?=$social_media->description?>">
+			<input  type="text" name="description" class="form-control" value="<?=htmlentities($social_media->description)?>" placeholder="<?=htmlentities($social_media->description)?>">
 			<label>Site URL</label>
-			<input required type="text" name="url" class="form-control" value="<?=$social_media->url?>" placeholder="<?=$social_media->url?>">
+			<input required type="text" name="url" class="form-control" value="<?=htmlentities($social_media->url)?>" placeholder="<?=htmlentities($social_media->url)?>">
 			<input required type="hidden" value="<?=$social_media->id?>" name="id">
 			<input type="submit" class="btn btn-primary" name="submit" value="Update">
 			<?= form_close(); ?>

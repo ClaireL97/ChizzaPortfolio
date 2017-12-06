@@ -9,11 +9,11 @@
 				<div class="edit-affiliate" style="display:none">
 					<?= form_open("Affiliate/edit_affiliate", array('class'=>'edit-affiliate-form')); ?>
 					<label for="name">Affiliate Name</label>
-					<input required type="text" id="name-<?$affiliate->id?>" name="name" class="form-control" value="<?=$affiliate->name?>" placeholder="<?=$affiliate->name?>">
+					<input required type="text" id="name-<?$affiliate->id?>" name="name" class="form-control" value="<?=htmlentities($affiliate->name)?>" placeholder="<?=htmlentities($affiliate->name)?>
 					<label for="description-<?=$affiliate->id?>">Description</label>
 					<textarea id="description-<?=$affiliate->id?>" class="form-control" rows="3" name="description"><?=$affiliate->description?></textarea>
 					<label for="url">Affiliate's Site</label>
-					<input required type="text" name="url" id="url" class="form-control" value="<?=$affiliate->url?>" placeholder="<?=$affiliate->url?>">
+					<input type="text" name="url" id="url" class="form-control" value="<?=$affiliate->url?>" placeholder="<?=$affiliate->url?>">
 					<input required type="hidden" value="<?=$affiliate->id?>" name="id">
 					</br>
 					<input type="submit"  class="btn btn-primary" name="submit" value="Update">

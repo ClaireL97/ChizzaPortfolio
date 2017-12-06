@@ -6,7 +6,7 @@
 	<div class="col-sm-3">
 		<?= form_open("tag/update_tag"); ?>
 		<label for="tag">Tag Name</label>
-		<input required type="text" name="tag" class="form-control" id="tag" value="<?=$tag->name?>" placeholder="<?=$tag->name?>">
+		<input required type="text" name="tag" class="form-control" id="tag" value="<?=htmlentities($tag->name)?>" placeholder="<?=htmlentities($tag->name)?>">
 		<input required type="hidden" value="<?=$tag->id?>" name="id">
 		<input type="submit" name="submit" class="btn btn-primary" value="Update">
 		<?= form_close(); ?>
