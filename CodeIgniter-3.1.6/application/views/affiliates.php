@@ -1,3 +1,4 @@
+<h1>Affiliates</h1>
 <?= $affiliateForm ?>
 <?php foreach ($affiliates as $affiliate) { ?>
 	<div class="row">
@@ -19,11 +20,11 @@
 					<?= form_close(); ?>
 				</div>
 				<?php } ?>
-				<div class="show-affiliate">
-					<?= $affiliate->name ?> <br/>
-					<?= $affiliate->description ?> <br/>
-					<?= $affiliate->url ?></br>
-				</div>
+				<h5><div class="show-affiliate">
+					<b><?= $affiliate->name ?></b><br/>
+					<i><?= $affiliate->description ?></i><br/>
+					<a href="<?= $affiliate->url ?>"><?= $affiliate->url ?></a></br>
+				</div></h5>
 				<div class="row">
 					<?php if (isset($_SESSION['logged_in'])) { ?>
 					<button class="edit-affiliate-btn btn btn-primary mr-sm-2">Edit</button>
