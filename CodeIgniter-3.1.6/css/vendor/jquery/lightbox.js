@@ -48,6 +48,8 @@ $(document).ready(function() {
     $(slides[slideIndex-1]).show();
     // dots[slideIndex-1].className += " active";
     $(dots[slideIndex-1]).addClass('active');
-    captionText.text($(dots[slideIndex-1]).attr('alt'));
+	var title = $(dots[slideIndex-1]).attr('data-title');
+	var caption = $(dots[slideIndex-1]).attr('data-caption');
+    captionText.html("<i>" + title + "</i> - " + caption);
   }
 });
