@@ -26,10 +26,6 @@
 $count = 0;
 ?>
 <?php foreach ($social_media as $social_media) { ?>
-<?php if ($count == 0) { ?>
-	<div class="row">
-<?php } ?>
-	<div>
 	<div class="parent-div">
 	<?php if (isset($_SESSION['logged_in'])) { ?>
 	<?= validation_errors(); ?>
@@ -58,15 +54,6 @@ $count = 0;
 		<?= form_close(); ?>
 		<?php } ?>
 		</div>
-		</div>
-	</div>
-<?php if ($count == 2) { ?>
-	</div><br/>
-<?php
-	$count = -1; 
-	}
-	$count++;
- ?>
 <?php } ?>
 
 
