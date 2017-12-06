@@ -28,6 +28,8 @@ class Art extends CI_Controller {
 	public function upload_art()
 	{
 		ini_set('memory_limit', '64M');
+		ini_set('upload_max_filesize' ,'64M');
+		ini_set('post_max_size', '64M');
 		$this->load->model('Art_model');
 		$user_id = $this->session->userdata('user_id');
 		$config['upload_path'] = UPLOAD_PATH;
