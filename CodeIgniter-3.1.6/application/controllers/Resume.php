@@ -28,7 +28,7 @@ class Resume extends CI_Controller {
 			// deletes the old resume before uploading the new one
 		}
 
-		$config['upload_path'] = '/var/www/chizza_portfolio/CodeIgniter-3.1.6/application/uploads/';
+		$config['upload_path'] = UPLOAD_PATH;
 		$config['allowed_types'] = "*";
 		$config['file_name'] = 'resume.pdf';
 		$this->load->library('upload', $config);
