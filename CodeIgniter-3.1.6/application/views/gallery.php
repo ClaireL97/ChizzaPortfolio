@@ -19,7 +19,7 @@ foreach($arts as $art) {
 	</div>
 	<?php if ($count == 2 || $count == count($arts)) { ?>
 		</div>
-	<?php 
+	<?php
 			$count = -1;
 		} ?>
 	<?php $count++;
@@ -34,10 +34,21 @@ $number = 1; // reset to 1 for the next set of loops
 <div id="myModal" class="modal">
   <span class="close cursor">&times;</span>
   <div class="modal-content">
-
+  <div class="row valign-items">
+		<div style="margin-left:35px"></div>
+	    <?php foreach($arts as $art) { ?>
+	    	<?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
+		    	<div class="columnLightBox demo" style="background-image: url('<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>');" data-number="<?=$number?>" data-title="<?=$art->title?>" data-caption="<?=$art->caption?>"></div>
+		    <?php } else { ?>
+		    	<div class="columnLightBox">
+						<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=50&toolbar=0" width="200%" height="100%" class="demo" type="application/pdf" alt="<?=$art->title?>">
+					</div>
+				<?php } ?>
+	    <?php $number++;
+	    } ?>
+  </div>
 	<?php foreach($arts as $art) { ?>
     <div class="mySlides">
-      <div class="numbertext"><?= $number ?> / <?= $max ?></div>
       <center>
       <?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
       	<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="600px" class="modal-img">
@@ -46,9 +57,9 @@ $number = 1; // reset to 1 for the next set of loops
 		<?php } ?>
       </center>
     </div>
-    	<?php 
+    	<?php
     	$number++;
-	} 
+	}
     $number = 1; ?>
 
     <a class="prev">&#10094;</a>
@@ -56,19 +67,6 @@ $number = 1; // reset to 1 for the next set of loops
 
     <div class="caption-container">
       <p id="caption"></p>
-    </div>
-	<div class="row valign-items">
-	<div style="margin-left:35px"></div>
-	    <?php foreach($arts as $art) { ?>
-		    <div class="columnLightBox">
-		    <?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
-		      <img class="demo" src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" data-number="<?=$number?>" data-title="<?=$art->title?>" data-caption="<?=$art->caption?>" width="100%" height="auto">
-		     <?php } else { ?>
-				<embed src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>#zoom=50&toolbar=0" width="200%" height="100%" class="demo" type="application/pdf" alt="<?=$art->title?>">
-			<?php } ?>
-		    </div>
-	    	<?php $number++;
-	    } ?>
     </div>
   </div>
 </div>

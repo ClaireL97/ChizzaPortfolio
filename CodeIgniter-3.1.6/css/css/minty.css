@@ -696,8 +696,7 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+          padding: 10px 0px;
 }
 
 .no-gutters {
@@ -5338,7 +5337,9 @@ button.close {
   left: 0;
   z-index: 1050;
   display: none;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
   outline: 0;
 }
 
@@ -5369,7 +5370,7 @@ button.close {
 }
 
 .modal-content {
-  position: relative;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5381,8 +5382,25 @@ button.close {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.6rem;
+  left: 0;
+    right: 0;
+    padding-left: 126px;
+  background-color: rgba(0, 0, 0, 0.5);
   outline: 0;
+    bottom: 0;
+    top: 56px;
+    overflow-x: auto;
+}
+
+.modal-content .valign-items {
+    position: fixed;
+    left: 0px;
+    top: 56px;
+    display: inline-block;
+    width: 127px;
+    bottom: 0;
+    background: rgba(0, 0, 0, .9);
+    padding: 10px;
 }
 
 .modal-backdrop {
