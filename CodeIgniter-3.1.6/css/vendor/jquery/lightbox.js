@@ -50,6 +50,9 @@ $(document).ready(function() {
     $(dots[slideIndex-1]).addClass('active');
 	var title = $(dots[slideIndex-1]).attr('data-title');
 	var caption = $(dots[slideIndex-1]).attr('data-caption');
-    captionText.html("<i>" + title + "</i> - " + caption);
+	if (caption.len > 0) {
+		caption = " - " + caption;
+	}
+    captionText.html("<i>" + title + "</i>" + caption);
   }
 });
