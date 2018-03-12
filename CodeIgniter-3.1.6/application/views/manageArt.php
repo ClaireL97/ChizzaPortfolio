@@ -47,9 +47,6 @@
 $(document).ready(function(){
 	$(document).on('click', '.edit-art-btn', function(e) {
 		$editDiv = $(this).parent();
-		console.log($editDiv);
-		console.log("$editDiv ^ and below is $(this)");
-		console.log($(this));
 		$editDiv.find('.show-art').hide();
 		$editDiv.find('.edit-art').show();
 		$(this).hide();
