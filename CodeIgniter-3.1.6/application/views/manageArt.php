@@ -1,8 +1,16 @@
 <span class="label-danger"><?= $error ?></span>
 <?= $artUpload_form?>
-<?php foreach ($arts as $art) { ?>
+<?php
+$count = 0;
+$max = count($arts); // to show X / <max>
+
+foreach ($arts as $art) { 
+	if ($count == 0) { ?>
+		<div class="row mt-sm-2 valign-items">
+	<?php } ?>
+
 	<?= validation_errors(); ?>
-	<div class="parent-div">
+	<div class="parent-div col-sm-4">
 		<div class="edit-art" style="display:none">
 			<?= form_open("Art/update_art_data", array('class'=>'edit-art-form')); ?>
 			<legend>Edit Upload</legend>
@@ -31,13 +39,21 @@
 			<?= $art->caption ?> <br/>
 		</div>
 		<button class="edit-art-btn btn btn-primary">Edit</button>
+		<?= form_open("Art/delete_art"); ?>
+			<input required type="hidden" value="<?=$art->id?>" name="id">
+			<input type="submit" class="delete btn btn-secondary" value="Delete">
+		<?= form_close(); ?>
 	</div>
 	<!-- <button class="edit-art-btn btn btn-primary">Edit</button> -->
-	<?= form_open("Art/delete_art"); ?>
-		<input required type="hidden" value="<?=$art->id?>" name="id">
-		<input type="submit" class="delete btn btn-secondary" value="Delete">
-	<?= form_close(); ?>
-	<br/>
+	<?php if ($count == 2 || $count == count($arts)) { ?>
+		</div>
+	<?php
+		$count = -1;
+	} ?>
+	<?php $count++; ?>
+<?php }
+if ($count != -1) { // close the unclosed div-row ?>
+	</div>
 <?php } ?>
 
 
