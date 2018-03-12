@@ -8,7 +8,7 @@
 			<legend>Edit Upload</legend>
 			<img src="<?=base_url(array_slice(explode('/', $art->file), -3, 3, true))?>" height="42" width="42"></br>
 			<label>Title</label>
-			<input required type="text" name="title" class="form-control" value="<?=htmlentities($art->title)?>" placeholder="<?<?=htmlentities($art->title)?>">
+			<input required type="text" name="title" class="form-control" value="<?=htmlentities($art->title)?>" placeholder="<?=htmlentities($art->title)?>">
 			<label>Caption</label>
 			<input type="text" name="caption" class="form-control" value="<?=htmlentities($art->caption)?>" placeholder="<?=htmlentities($art->caption)?>">
 			<label>Tags</label>
