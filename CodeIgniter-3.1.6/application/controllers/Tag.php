@@ -38,6 +38,18 @@ class Tag extends CI_Controller {
 		redirect('/Tag/manageTags');
 	}
 
+	public function update_tag_ajax()
+	{
+		$this->load->model('Tag_model');
+		$id = $this->input->post('id');
+		$tag = $this->input->post('tag');
+		$this->Tag_model->update_tag($id, $tag);
+
+		die(json_encode(array(
+			"name" => $tag
+		)));
+	}
+
 	public function delete_tag()
 	{
 		$this->load->model('Tag_model');

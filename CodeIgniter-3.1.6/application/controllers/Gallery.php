@@ -50,6 +50,21 @@ class Gallery extends CI_Controller {
 		redirect('/Gallery/manageGalleries');
 	}
 
+	public function updateGallery_ajax()
+	{
+		$this->load->model('Gallery_model');
+		$id = $this->input->post('id');
+		$title = $this->input->post('title');
+		$tags = (array) $this->input->post('tags');
+		$this->Gallery_model->updateGallery($id, $title, $tags);
+
+		die(json_encode(array(
+			"title" => $title,
+			"tags" => $tags,
+			"id" => $id
+		)));
+	}
+
 	public function createGallery()
 	{
 		$this->load->model('Gallery_model');
