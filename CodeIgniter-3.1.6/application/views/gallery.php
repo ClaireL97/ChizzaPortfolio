@@ -4,10 +4,13 @@
 $count = 0;
 $max = count($arts); // to show X / <max>
 $number = 1;
+
 foreach($arts as $art) {
+
 	if ($count == 0) { ?>
 		<div class="row mt-sm-2 valign-items">
 	<?php } ?>
+
 	<div class="col-sm-4">
 	<center>
 		<?php if (in_array(pathinfo($art->file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif'])) { ?>
@@ -17,11 +20,12 @@ foreach($arts as $art) {
 		<?php } ?>
 		</center>
 	</div>
+
 	<?php if ($count == 2 || $count == count($arts)) { ?>
 		</div>
 	<?php
-			$count = -1;
-		} ?>
+		$count = -1;
+	} ?>
 	<?php $count++;
 		  $number++; ?>
 <?php }
