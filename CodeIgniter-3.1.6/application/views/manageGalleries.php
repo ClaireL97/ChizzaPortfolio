@@ -1,28 +1,41 @@
 <?= $galleryForm ?>
-
+<table>
+	<tr>
+		<th>Gallery Name</th>
+		<th>Tags</th>
+	</tr>
 <?php foreach($galleries as $gallery) { ?>
+	<tr>
 	<?= validation_errors(); ?>
 	<div class="col-sm-3">
+	<td>
 		<?= form_open("gallery/updateGallery"); ?>
-		<label for="title">Gallery Title</label>
 		<input required type="text" name="title" class="form-control" id="title" value="<?=htmlentities($gallery->title)?>" placeholder="<?=htmlentities($gallery->title)?>">
 		<input required type="hidden" value="<?=$gallery->id?>" name="id">
-		<label>Tags</label>
+	</td>
+	<td>
 			<select name="tags[]" multiple class="form-control">
 				<?php foreach($tags as $tag) { ?>
 					<option <?= in_array($tag->id, $gallery->tag_ids) ? 'selected' : '' ?>
 						value="<?=$tag->id?>"> <?=$tag->name?> </option>
 				<?php } ?>
 			</select>
+	</td>
+	<td>
 		<input type="submit" name="submit" class="btn btn-primary" value="Update">
 		<?= form_close(); ?>
+	</td>
+	<td>
 		<?= form_open("gallery/deleteGallery"); ?>
 			<input required type="hidden" value="<?=$gallery->id?>" name="id">
 			<input type="submit" class="delete btn btn-secondary" value="Delete">
 		<?= form_close(); ?>
+	</td>
 	</div>
 	<br/>
+	</tr>
 <?php } ?>
+</table>
 
 <?=$footer?>
 <script>
