@@ -30,9 +30,9 @@
 			</br>
 			<?= $art->caption ?> <br/>
 		</div>
+		<button class="edit-art-btn btn btn-primary">Edit</button>
 	</div>
-	</br>
-	<button class="edit-art-btn btn btn-primary">Edit</button>
+	<!-- <button class="edit-art-btn btn btn-primary">Edit</button> -->
 	<?= form_open("Art/delete_art"); ?>
 		<input required type="hidden" value="<?=$art->id?>" name="id">
 		<input type="submit" class="delete btn btn-secondary" value="Delete">
@@ -47,6 +47,9 @@
 $(document).ready(function(){
 	$(document).on('click', '.edit-art-btn', function(e) {
 		$editDiv = $(this).parent();
+		console.log($editDiv);
+		console.log("$editDiv ^ and below is $(this)");
+		console.log($(this));
 		$editDiv.find('.show-art').hide();
 		$editDiv.find('.edit-art').show();
 		$(this).hide();
